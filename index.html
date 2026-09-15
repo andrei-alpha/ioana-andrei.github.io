@@ -1,1 +1,998 @@
-Welcome!
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ioana &amp; Andrei • 8 Mai 2027 • Nuntă la Pădurile Regale</title>
+  <meta name="description" content="Cu emoție și speranță în suflet, vă invităm să ne fiți alături pe 8 Mai 2027 la Pădurile Regale! Ceremonia la 18:00 în pădurea de stejari seculari, Petrecerea de la 19:00 până între 02:00 și 05:00 dimineața. Transport asigurat cu Blue de la Metrou Pipera." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Subtle Snowfall Overlay -->
+  <canvas id="snow-canvas" aria-hidden="true"></canvas>
+
+  <!-- Navigation Header -->
+  <header id="site-header" class="site-header">
+    <div class="nav-container">
+      <a href="#acasa" class="brand-logo" id="nav-brand-link">
+        <div class="brand-crest-mini">I&amp;A</div>
+        <div class="brand-text">
+          <span class="brand-names">IOANA &amp; ANDREI</span>
+          <span class="brand-sub" data-ro="8 MAI 2027 • PĂDURILE REGALE" data-en="MAY 8, 2027 • PĂDURILE REGALE">8 MAI 2027 • PĂDURILE REGALE</span>
+        </div>
+      </a>
+
+      <nav aria-label="Main Navigation">
+        <ul class="nav-links">
+          <li><a href="#acasa" data-ro="Acasă" data-en="Home">Acasă</a></li>
+          <li><a href="#poveste" data-ro="Povestea &amp; Muntele" data-en="Our Alpine Story">Povestea &amp; Muntele</a></li>
+          <li><a href="#program" data-ro="Program" data-en="Schedule">Program</a></li>
+          <li><a href="#locatie-transport" data-ro="Locație &amp; Transport Blue" data-en="Venue &amp; Blue Shuttle">Locație &amp; Transport Blue</a></li>
+          <li><a href="#confirmari" data-ro="Confirmări" data-en="RSVP">Confirmări</a></li>
+          <li><a href="#galerie-foto" data-ro="Galerie Foto" data-en="Our Photos">Galerie Foto</a></li>
+          <li><a href="#galerie" data-ro="Upload Poze" data-en="Photo Upload">Upload Poze</a></li>
+          <li><a href="#faq" data-ro="FAQ" data-en="FAQ">FAQ</a></li>
+        </ul>
+      </nav>
+
+      <div class="nav-actions">
+        <button type="button" id="snow-toggle-btn" class="btn-pill-sm" title="Comută ninsoarea alpină">
+          ❄️ <span data-ro="Atmosferă" data-en="Snow">Atmosferă</span>
+        </button>
+        <button type="button" id="lang-toggle-btn" class="btn-pill-sm" aria-label="Switch Language">
+          🌐 RO / <span style="opacity:0.6">EN</span>
+        </button>
+        <a href="#confirmari" class="btn-rsvp-nav" id="header-rsvp-btn" data-ro="Confirmă (RSVP)" data-en="RSVP Now">Confirmă (RSVP)</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- HERO SECTION WITH INTERACTIVE REAL-PHOTO SLIDESHOW BACKGROUND -->
+    <section id="acasa" class="hero-section">
+      <!-- Dual-Layer Background Slideshow (100% Real Photos of Ioana & Andrei) -->
+      <div class="hero-slideshow-wrapper" aria-hidden="true">
+        <!-- Slide 1: Lake Embrace beneath Matterhorn -->
+        <div class="hero-slide active">
+          <img src="assets/real_01_lake_embrace.jpg" class="hero-slide-ambient" alt="" />
+          <img src="assets/real_01_lake_embrace.jpg" class="hero-slide-main" alt="Ioana și Andrei îmbrățișați lângă lacul alpin sub Matterhorn" />
+        </div>
+        <!-- Slide 2: Ski Goggles on Snowy Slope -->
+        <div class="hero-slide">
+          <img src="assets/real_04_ski_goggles.jpg" class="hero-slide-ambient" alt="" />
+          <img src="assets/real_04_ski_goggles.jpg" class="hero-slide-main" alt="Ioana și Andrei pe pârtia de schi" />
+        </div>
+        <!-- Slide 3: Engagement Ring at Matterhorn -->
+        <div class="hero-slide">
+          <img src="assets/real_02_ring_matterhorn.jpg" class="hero-slide-ambient" alt="" />
+          <img src="assets/real_02_ring_matterhorn.jpg" class="hero-slide-main" alt="Inelul de logodnă în fața vârfului Matterhorn" />
+        </div>
+        <!-- Slide 4: Dolomites Turquoise Lake Lift -->
+        <div class="hero-slide">
+          <img src="assets/real_06_dolomites_lift.jpg" class="hero-slide-ambient" alt="" />
+          <img src="assets/real_06_dolomites_lift.jpg" class="hero-slide-main" alt="Ioana și Andrei în Dolomiți lângă lacul turcoaz" />
+        </div>
+        <!-- Slide 5: Ice Skating on Mountain Lake -->
+        <div class="hero-slide">
+          <img src="assets/real_07_ice_skating.jpg" class="hero-slide-ambient" alt="" />
+          <img src="assets/real_07_ice_skating.jpg" class="hero-slide-main" alt="Ioana și Andrei la patinaj pe lacul înghețat din munți" />
+        </div>
+      </div>
+
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content">
+        <div class="alpine-badge">
+          <span>⛷️</span>
+          <span data-ro="ALTITUDINEA FERICIRII • 8 MAI 2027 • CORBEANCA" data-en="SUMMIT OF LOVE • MAY 8, 2027 • CORBEANCA">ALTITUDINEA FERICIRII • 8 MAI 2027 • CORBEANCA</span>
+        </div>
+
+        <p class="hero-quote-pre" data-ro="Cu emoție și speranță în suflet," data-en="With emotion and hope in our souls,">
+          Cu emoție și speranță în suflet,
+        </p>
+
+        <h1 class="hero-title">
+          IOANA <span class="amp">&amp;</span> ANDREI
+        </h1>
+
+        <p class="hero-subtitle-invite" data-ro="Vă invităm să ne fiți alături în ziua cea mare" data-en="We invite you to celebrate our greatest adventure">
+          Vă invităm să ne fiți alături în ziua cea mare
+        </p>
+
+        <!-- Key Event Details Pill Bar -->
+        <div class="hero-meta-bar">
+          <div class="hero-meta-item">
+            <span>📅</span>
+            <strong data-ro="Sâmbătă, 8 Mai 2027" data-en="Saturday, May 8, 2027">Sâmbătă, 8 Mai 2027</strong>
+          </div>
+          <div class="hero-meta-divider"></div>
+          <div class="hero-meta-item">
+            <span>🌳</span>
+            <strong>Pădurile Regale</strong>
+          </div>
+          <div class="hero-meta-divider"></div>
+          <div class="hero-meta-item">
+            <span>⛪</span>
+            <span data-ro="Ceremonia: 18:00" data-en="Ceremony: 18:00">Ceremonia: 18:00</span>
+          </div>
+          <div class="hero-meta-divider"></div>
+          <div class="hero-meta-item">
+            <span>🥂</span>
+            <span data-ro="Petrecerea: 19:00 – 02:00/05:00" data-en="Main Party: 19:00 – 2:00/5:00 AM">Petrecerea: 19:00 – 02:00/05:00</span>
+          </div>
+          <div class="hero-meta-divider"></div>
+          <div class="hero-meta-item">
+            <span>🚙</span>
+            <span data-ro="Transport Blue (Metrou Pipera)" data-en="Blue Shuttle (Pipera Metro)">Transport Blue (Metrou Pipera)</span>
+          </div>
+        </div>
+
+        <!-- Live Countdown Timer -->
+        <div class="countdown-grid" aria-label="Countdown to Wedding">
+          <div class="countdown-box">
+            <div class="countdown-num" id="cd-days">235</div>
+            <div class="countdown-label" data-ro="Zile" data-en="Days">Zile</div>
+          </div>
+          <div class="countdown-box">
+            <div class="countdown-num" id="cd-hours">04</div>
+            <div class="countdown-label" data-ro="Ore" data-en="Hours">Ore</div>
+          </div>
+          <div class="countdown-box">
+            <div class="countdown-num" id="cd-mins">49</div>
+            <div class="countdown-label" data-ro="Minute" data-en="Minutes">Minute</div>
+          </div>
+          <div class="countdown-box">
+            <div class="countdown-num" id="cd-secs">28</div>
+            <div class="countdown-label" data-ro="Secunde" data-en="Seconds">Secunde</div>
+          </div>
+        </div>
+
+        <!-- Hero CTA Buttons -->
+        <div class="hero-cta-group">
+          <a href="#confirmari" class="btn-primary-gold" id="hero-btn-rsvp">
+            <span>⛷️</span>
+            <span data-ro="Confirmă Prezența (Dă-ne de veste!)" data-en="Confirm Attendance (RSVP)">Confirmă Prezența (Dă-ne de veste!)</span>
+          </a>
+          <button type="button" class="btn-outline-snow" id="btn-download-ics">
+            <span>📆</span>
+            <span data-ro="Salvează în Calendar (.ics)" data-en="Add to Calendar (.ics)">Salvează în Calendar (.ics)</span>
+          </button>
+        </div>
+
+        <!-- Interactive Hero Background Slideshow Controls -->
+        <div class="hero-slideshow-controls" aria-label="Hero Background Slideshow Controls">
+          <button type="button" class="slide-ctrl-btn" id="hero-prev-btn" title="Fotografia anterioară" aria-label="Previous slide">‹</button>
+          <div class="slide-dots">
+            <button type="button" class="slide-dot active" aria-label="Slide 1"></button>
+            <button type="button" class="slide-dot" aria-label="Slide 2"></button>
+            <button type="button" class="slide-dot" aria-label="Slide 3"></button>
+            <button type="button" class="slide-dot" aria-label="Slide 4"></button>
+            <button type="button" class="slide-dot" aria-label="Slide 5"></button>
+          </div>
+          <button type="button" class="slide-ctrl-btn" id="hero-next-btn" title="Fotografia următoare" aria-label="Next slide">›</button>
+          <button type="button" class="slide-play-pill" id="hero-play-toggle" title="Pauză / Rulează Slideshow">
+            ⏸ Pauză Slideshow
+          </button>
+        </div>
+      </div>
+
+      <!-- Mountain Silhouette SVG Divider -->
+      <div class="mountain-divider">
+        <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0,120 L0,75 L180,25 L340,80 L540,12 L760,85 L980,20 L1180,70 L1340,30 L1440,65 L1440,120 Z" fill="#f8f9fa" opacity="0.35"></path>
+          <path d="M0,120 L0,90 L240,40 L460,95 L720,25 L960,90 L1220,38 L1440,82 L1440,120 Z" fill="#f8f9fa"></path>
+        </svg>
+      </div>
+    </section>
+
+    <!-- OUR ALPINE STORY & THEME SECTION -->
+    <section id="poveste" class="section-padding topo-pattern-light">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <span>🏔️</span>
+            <span data-ro="PASIUNEA NOASTRĂ PENTRU MUNTE &amp; SCHI" data-en="OUR PASSION FOR SKIING &amp; MOUNTAINS">PASIUNEA NOASTRĂ PENTRU MUNTE &amp; SCHI</span>
+          </div>
+          <h2 class="section-title" data-ro="CEA MAI FRUMOASĂ ASCENSIUNE A VIEȚII NOASTRE" data-en="THE GREATEST ASCENT OF OUR LIVES">
+            CEA MAI FRUMOASĂ ASCENSIUNE A VIEȚII NOASTRE
+          </h2>
+          <p class="section-subtitle" data-ro="De pe pârtiile înzăpezite din Zermatt și Dolomiți până sub coroanele stejarilor seculari din Pădurile Regale, fiecare viraj ne-a adus mai aproape de ziua de 8 Mai 2027." data-en="From snowy slopes in Zermatt and the Dolomites to the towering secular oaks of Pădurile Regale, every turn brought us closer to May 8, 2027.">
+            De pe pârtiile înzăpezite din Zermatt și Dolomiți până sub coroanele stejarilor seculari din Pădurile Regale, fiecare viraj ne-a adus mai aproape de ziua de 8 Mai 2027.
+          </p>
+        </div>
+
+        <div class="story-grid">
+          <!-- Interactive Photo Carousel Card (Real Photos of Ioana & Andrei) -->
+          <div class="story-carousel-card">
+            <div class="story-carousel-stage">
+              <button type="button" class="story-nav-btn prev" id="story-prev-btn" aria-label="Previous story photo">‹</button>
+              <img src="assets/real_03_heart_frame.jpg" alt="Ioana și Andrei în Zermatt - Matterhorn" id="story-carousel-main-img" style="transition: opacity 0.2s ease;" />
+              <button type="button" class="story-nav-btn next" id="story-next-btn" aria-label="Next story photo">›</button>
+              <div class="story-carousel-caption" id="story-carousel-caption">
+                În rama inimii din Zermatt, cu vârful Matterhorn pe fundal 🏔️❤️
+              </div>
+            </div>
+
+            <!-- Thumbnails Strip -->
+            <div class="story-thumbs-strip">
+              <button type="button" class="story-thumb-btn active"
+                data-src="assets/real_03_heart_frame.jpg"
+                data-caption-ro="În rama inimii din Zermatt, cu vârful Matterhorn pe fundal 🏔️❤️"
+                data-caption-en="Inside the wooden heart frame in Zermatt with the Matterhorn behind us 🏔️❤️">
+                <img src="assets/real_03_heart_frame.jpg" alt="Zermatt Heart Frame" />
+              </button>
+              <button type="button" class="story-thumb-btn"
+                data-src="assets/real_04_ski_goggles.jpg"
+                data-caption-ro="Pe pârtia de schi, în elementul nostru favorit ⛷️❄️"
+                data-caption-en="On the ski slopes together, in our favorite element ⛷️❄️">
+                <img src="assets/real_04_ski_goggles.jpg" alt="Ski Goggles on Slope" />
+              </button>
+              <button type="button" class="story-thumb-btn"
+                data-src="assets/real_05_glacier_heart.jpg"
+                data-caption-ro="Pe ghețar la peste 3.000m altitudine, formând o inimă 🤍🏔️"
+                data-caption-en="On the glacier above 3,000m altitude, making a heart with our hands 🤍🏔️">
+                <img src="assets/real_05_glacier_heart.jpg" alt="Glacier Heart" />
+              </button>
+              <button type="button" class="story-thumb-btn"
+                data-src="assets/real_08_xc_skis.jpg"
+                data-caption-ro="Cu schiurile de fond în valea înzăpezită 🎿🌲"
+                data-caption-en="Cross-country skiing in a serene snowy alpine valley 🎿🌲">
+                <img src="assets/real_08_xc_skis.jpg" alt="Cross-country skis" />
+              </button>
+              <button type="button" class="story-thumb-btn"
+                data-src="assets/real_09_swiss_kiss.jpg"
+                data-caption-ro="Sărut pe străduțele alpine din Elveția 🇨🇭✨"
+                data-caption-en="A kiss on charming Swiss alpine cobblestone streets 🇨🇭✨">
+                <img src="assets/real_09_swiss_kiss.jpg" alt="Swiss Village Kiss" />
+              </button>
+            </div>
+          </div>
+
+          <div class="story-text-content">
+            <h3 style="font-family: var(--font-display); font-size: 1.75rem; margin-bottom: 1rem; color: var(--text-dark);" data-ro="DE CE MUNTELE &amp; PĂDURILE REGALE?" data-en="WHY MOUNTAINS &amp; PĂDURILE REGALE?">
+              DE CE MUNTELE &amp; PĂDURILE REGALE?
+            </h3>
+            <p style="color: var(--text-muted-dark); margin-bottom: 1.25rem;" data-ro="Pentru noi, Ioana și Andrei, muntele a fost mereu locul unde timpul stă în loc. Fie că suntem cu schiurile în picioare la prima oră a dimineții pe pârtie sau pe poteci de creastă, acolo am învățat ce înseamnă echipa perfectă. Pe 8 Mai 2027, vă invităm în inima unei păduri autentice de stejari cu arbori impunători, care ne amintește de liniștea și măreția naturii montane: Pădurile Regale." data-en="For us, Ioana and Andrei, the mountains have always been where time stands still. Whether carving fresh powder on skis at dawn or hiking high ridges, that is where we learned what a true team means. On May 8, 2027, we invite you deep into the heart of a majestic oak forest with towering ancient trees that echoes our love for wild nature: Pădurile Regale.">
+              Pentru noi, Ioana și Andrei, muntele a fost mereu locul unde timpul stă în loc. Fie că suntem cu schiurile în picioare la prima oră a dimineții pe pârtie sau pe poteci de creastă, acolo am învățat ce înseamnă echipa perfectă. Pe 8 Mai 2027, vă invităm în inima unei păduri autentice de stejari cu arbori impunători, care ne amintește de liniștea și măreția naturii montane: Pădurile Regale.
+            </p>
+
+            <div class="ski-milestones">
+              <!-- Milestone 1: Green Run -->
+              <div class="milestone-card">
+                <img src="assets/real_08_xc_skis.jpg" alt="Primele coborâri la schi" class="milestone-photo-avatar" />
+                <div class="ski-symbol ski-green" title="Green Circle - Easy Run">●</div>
+                <div class="milestone-info">
+                  <h4 data-ro="PÂRTIA VERDE • PRIMELE COBORÂRI ÎMPREUNĂ" data-en="GREEN RUN • FIRST DESCENTS TOGETHER">PÂRTIA VERDE • PRIMELE COBORÂRI ÎMPREUNĂ</h4>
+                  <p data-ro="Primele vacanțe la schi, ceaiul cald în vârful muntelui și promisiunea că vom explora lumea împreună." data-en="Our first ski trips, hot tea at the summit, and the promise to explore every peak side by side.">
+                    Primele vacanțe la schi, ceaiul cald în vârful muntelui și promisiunea că vom explora lumea împreună.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Milestone 2: Blue Run (Proposal with Matterhorn Ring Photo) -->
+              <div class="milestone-card">
+                <img src="assets/real_02_ring_matterhorn.jpg" alt="Cererea în căsătorie la Matterhorn" class="milestone-photo-avatar" />
+                <div class="ski-symbol ski-blue" title="Blue Square - Intermediate Run">■</div>
+                <div class="milestone-info">
+                  <h4 data-ro="PÂRTIA ALBASTRĂ • CEREREA ÎN CĂSĂTORIE SUB MATTERHORN" data-en="BLUE RUN • PROPOSAL BENEATH THE MATTERHORN">PÂRTIA ALBASTRĂ • CEREREA ÎN CĂSĂTORIE SUB MATTERHORN</h4>
+                  <p data-ro="În fața maiestuosului Matterhorn, sub cerul senin de munte, am decis că următoarea noastră mare aventură va fi pentru totdeauna." data-en="In front of the majestic Matterhorn beneath a clear alpine sky, we decided our next great expedition would last a lifetime.">
+                    În fața maiestuosului Matterhorn, sub cerul senin de munte, am decis că următoarea noastră mare aventură va fi pentru totdeauna.
+                  </p>
+                </div>
+              </div>
+
+              <!-- Milestone 3: Double Black Diamond -->
+              <div class="milestone-card">
+                <img src="assets/real_01_lake_embrace.jpg" alt="Nunta la Pădurile Regale" class="milestone-photo-avatar" />
+                <div class="ski-symbol ski-black" title="Black Diamond - Summit Run">◆◆</div>
+                <div class="milestone-info">
+                  <h4 data-ro="DUBLU DIAMANT NEGRU • 8 MAI 2027 LA PĂDURILE REGALE" data-en="DOUBLE BLACK DIAMOND • MAY 8, 2027 AT PĂDURILE REGALE">DUBLU DIAMANT NEGRU • 8 MAI 2027 LA PĂDURILE REGALE</h4>
+                  <p data-ro="Ceremonia de la 18:00 sub stejarii uriași și Petrecerea Après-Ski de la 19:00 până între 02:00 și 05:00 dimineața!" data-en="The 18:00 Ceremony beneath giant oak trees and the 19:00 Après-Ski Forest Party lasting until between 2:00 AM and 5:00 AM!">
+                    Ceremonia de la 18:00 sub stejarii uriași și Petrecerea Après-Ski de la 19:00 până între 02:00 și 05:00 dimineața!
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SCHEDULE / PROGRAM SECTION (SKI TRAIL MAP TIMELINE) -->
+    <section id="program" class="section-padding topo-pattern-dark dark-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag gold">
+            <span>⛷️</span>
+            <span data-ro="HARTA PÂRTIILOR • 8 MAI 2027" data-en="TRAIL MAP ITINERARY • MAY 8, 2027">HARTA PÂRTIILOR • 8 MAI 2027</span>
+          </div>
+          <h2 class="section-title" data-ro="PROGRAMUL EVENIMENTULUI" data-en="WEDDING DAY SCHEDULE">
+            PROGRAMUL EVENIMENTULUI
+          </h2>
+          <p class="section-subtitle" data-ro="Mișcarea pe pârtie este atent planificată pentru ca voi să vă bucurați de fiecare clipă." data-en="Our alpine timeline is carefully crafted so you can enjoy every moment of the ascent.">
+            Mișcarea pe pârtie este atent planificată pentru ca voi să vă bucurați de fiecare clipă.
+          </p>
+        </div>
+
+        <div class="timeline-wrapper">
+          <div class="ski-map-header">
+            <div>
+              <strong style="color: #fff; font-family: var(--font-display); letter-spacing: 1.5px;" data-ro="STATUS DOMENIU SCHIABIL: DESCHIS 100% PENTRU DISTRACȚIE" data-en="RESORT STATUS: 100% OPEN FOR CELEBRATION">
+                STATUS DOMENIU SCHIABIL: DESCHIS 100% PENTRU DISTRACȚIE
+              </strong>
+            </div>
+            <div class="ski-map-legend">
+              <div class="legend-item"><span class="legend-dot square"></span> <span data-ro="Transport Blue (Pipera)" data-en="Blue Shuttle">Transport Blue (Pipera)</span></div>
+              <div class="legend-item"><span class="legend-dot circle"></span> <span data-ro="Ceremonia (18:00)" data-en="Ceremony (18:00)">Ceremonia (18:00)</span></div>
+              <div class="legend-item"><span class="legend-dot diamond"></span> <span data-ro="Petrecerea (19:00 - 02:00/05:00)" data-en="Main Party (19:00 - 2:00/5:00 AM)">Petrecerea (19:00 - 02:00/05:00)</span></div>
+            </div>
+          </div>
+
+          <div class="schedule-cards-grid">
+            <!-- Card 1: Transport Blue Departure -->
+            <div class="schedule-card">
+              <div>
+                <div class="schedule-card-top">
+                  <div class="schedule-time-badge">
+                    <span>🚙</span> 17:15
+                  </div>
+                  <span class="trail-difficulty-pill pill-blue-run">■ PÂRTIA ALBASTRĂ / BLUE RUN</span>
+                </div>
+                <h3 data-ro="PLECAREA CU „BLUE” DE LA METROU PIPERA" data-en="DEPARTURE WITH 'BLUE' FROM PIPERA METRO">
+                  PLECAREA CU „BLUE” DE LA METROU PIPERA
+                </h3>
+                <p data-ro="Pentru ca voi să vă puteți bucura de șampanie fără grija mașinii, am asigurat transport dedicat prin serviciul „Blue” direct de la Stația de Metrou Pipera către Pădurile Regale. Primul grup pleacă între 17:15 și 17:35 (pentru Ceremonie), iar al doilea între 18:15 și 18:35." data-en="So you can toast freely without worrying about driving, we have arranged dedicated transport via 'Blue' directly from Pipera Metro Station to Pădurile Regale. First wave departs 17:15–17:35 (for Ceremony), second wave 18:15–18:35.">
+                  Pentru ca voi să vă puteți bucura de șampanie fără grija mașinii, am asigurat transport dedicat prin serviciul „Blue” direct de la Stația de Metrou Pipera către Pădurile Regale. Primul grup pleacă între 17:15 și 17:35 (pentru Ceremonie), iar al doilea între 18:15 și 18:35.
+                </p>
+              </div>
+              <div class="schedule-card-footer">
+                <span data-ro="📍 Punct de preluare: Metrou Pipera" data-en="📍 Pickup: Pipera Metro Station">📍 Punct de preluare: Metrou Pipera</span>
+                <a href="#locatie-transport" style="color: var(--accent-gold-light); text-decoration: none; font-weight: 600;" data-ro="Vezi detalii Blue →" data-en="View Blue details →">Vezi detalii Blue →</a>
+              </div>
+            </div>
+
+            <!-- Card 2: 18:00 Ceremony (Highlighted) -->
+            <div class="schedule-card featured">
+              <div>
+                <div class="schedule-card-top">
+                  <div class="schedule-time-badge">
+                    <span>⛪</span> 18:00
+                  </div>
+                  <span class="trail-difficulty-pill pill-black-diamond">● CEREMONIA / BASECAMP</span>
+                </div>
+                <h3 data-ro="CEREMONIA ÎN PĂDUREA DE STEJARI" data-en="THE CEREMONY IN THE OAK FOREST">
+                  CEREMONIA ÎN PĂDUREA DE STEJARI
+                </h3>
+                <p data-ro="Ne adunăm în inima pădurii din Corbeanca, la umbra stejarilor seculari uriași de la Pădurile Regale. Începând cu ora 18:00 fix, în lumina caldă a apusului de mai, ne vom rosti jurămintele în aer liber și vom începe oficial călătoria noastră ca familie." data-en="We gather in the heart of the Corbeanca forest, beneath the towering ancient oaks of Pădurile Regale. Starting promptly at 18:00 in the golden May sunset, we exchange our vows outdoors and officially begin our journey as husband and wife.">
+                  Ne adunăm în inima pădurii din Corbeanca, la umbra stejarilor seculari uriași de la Pădurile Regale. Începând cu ora 18:00 fix, în lumina caldă a apusului de mai, ne vom rosti jurămintele în aer liber și vom începe oficial călătoria noastră ca familie.
+                </p>
+              </div>
+              <div class="schedule-card-footer">
+                <span data-ro="🌳 Sub Stejarii Seculari • Pădurile Regale" data-en="🌳 Under the Giant Oaks • Pădurile Regale">🌳 Sub Stejarii Seculari • Pădurile Regale</span>
+                <span style="color: var(--accent-gold);" data-ro="Ora 18:00 Fix" data-en="18:00 Sharp">Ora 18:00 Fix</span>
+              </div>
+            </div>
+
+            <!-- Card 3: 19:00 Main Party (Highlighted) -->
+            <div class="schedule-card featured">
+              <div>
+                <div class="schedule-card-top">
+                  <div class="schedule-time-badge">
+                    <span>🥂</span> 19:00
+                  </div>
+                  <span class="trail-difficulty-pill pill-black-diamond">◆◆ MAREA PETRECERE / SUMMIT</span>
+                </div>
+                <h3 data-ro="PETRECEREA PRINCIPALĂ &amp; APRÈS-SKI ÎN PĂDURE" data-en="MAIN PARTY &amp; FOREST APRÈS-SKI CELEBRATION">
+                  PETRECEREA PRINCIPALĂ &amp; APRÈS-SKI ÎN PĂDURE
+                </h3>
+                <p data-ro="De la ora 19:00 dăm startul petrecerii principale în mijlocul pădurii de stejari cu arbori impunători la Pădurile Regale! Sub candelabrele și ghirlandele luminoase agățate printre stejarii uriași, vă așteptăm cu șampanie rece, cocktailuri inspirate de cabanele alpine, cină festivă, muzică live și dans până între orele 02:00 și 05:00 dimineața!" data-en="At 19:00 we kick off the main celebration deep in the towering oak forest at Pădurile Regale! Beneath warm chandeliers and fairy lights strung through the giant oak trees, expect chilled champagne, alpine lodge-inspired craft cocktails, gourmet dining, live music, and non-stop dancing until between 2:00 AM and 5:00 AM!">
+                  De la ora 19:00 dăm startul petrecerii principale în mijlocul pădurii de stejari cu arbori impunători la Pădurile Regale! Sub candelabrele și ghirlandele luminoase agățate printre stejarii uriași, vă așteptăm cu șampanie rece, cocktailuri inspirate de cabanele alpine, cină festivă, muzică live și dans până între orele 02:00 și 05:00 dimineața!
+                </p>
+              </div>
+              <div class="schedule-card-footer">
+                <span data-ro="✨ În Inima Pădurii de Stejari • Pădurile Regale" data-en="✨ In the Heart of the Oak Forest • Pădurile Regale">✨ În Inima Pădurii de Stejari • Pădurile Regale</span>
+                <span style="color: var(--accent-gold);" data-ro="Ora 19:00 – Între 02:00 și 05:00" data-en="19:00 – Between 2:00 &amp; 5:00 AM">Ora 19:00 – Între 02:00 și 05:00</span>
+              </div>
+            </div>
+
+            <!-- Card 4: Night Return Shuttle -->
+            <div class="schedule-card">
+              <div>
+                <div class="schedule-card-top">
+                  <div class="schedule-time-badge">
+                    <span>🌙</span> 02:00 – 05:00
+                  </div>
+                  <span class="trail-difficulty-pill pill-blue-run">■ COBORÂREA DE NOAPTE / NIGHT RUN</span>
+                </div>
+                <h3 data-ro="FINALUL PETRECERII &amp; RETUR CU „BLUE” SPRE BUCUREȘTI" data-en="PARTY FINALE &amp; RETURN SHUTTLES WITH 'BLUE'">
+                  FINALUL PETRECERII &amp; RETUR CU „BLUE” SPRE BUCUREȘTI
+                </h3>
+                <p data-ro="Petrecerea se încheie între orele 02:00 și 05:00 dimineața. Pe tot acest interval (02:00 – 05:00), mașinile „Blue” vor fi pregătite la Pădurile Regale pentru a vă duce în deplină siguranță și confort înapoi la Metrou Pipera / în București." data-en="The celebration wraps up between 2:00 AM and 5:00 AM. Throughout this entire window (2:00 AM – 5:00 AM), 'Blue' vehicles will be waiting right at Pădurile Regale to take you safely and comfortably back to Pipera Metro / Bucharest.">
+                  Petrecerea se încheie între orele 02:00 și 05:00 dimineața. Pe tot acest interval (02:00 – 05:00), mașinile „Blue” vor fi pregătite la Pădurile Regale pentru a vă duce în deplină siguranță și confort înapoi la Metrou Pipera / în București.
+                </p>
+              </div>
+              <div class="schedule-card-footer">
+                <span data-ro="🚕 Curse retur 02:00 – 05:00 dimineața" data-en="🚕 Return rides 2:00 AM – 5:00 AM">🚕 Curse retur 02:00 – 05:00 dimineața</span>
+                <a href="#confirmari" style="color: var(--accent-gold-light); text-decoration: none; font-weight: 600;" data-ro="Rezervă loc în RSVP →" data-en="Reserve seat in RSVP →">Rezervă loc în RSVP →</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VENUE & TRANSPORT SECTION (PADURILE REGALE OAK FOREST + BLUE FROM PIPERA) -->
+    <section id="locatie-transport" class="section-padding topo-pattern-light">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <span>📍</span>
+            <span data-ro="GHID DE CĂLĂTORIE SPRE EVENIMENT" data-en="VENUE &amp; TRANSPORTATION GUIDE">GHID DE CĂLĂTORIE SPRE EVENIMENT</span>
+          </div>
+          <h2 class="section-title" data-ro="LOCAȚIA &amp; TRANSPORTUL CU „BLUE”" data-en="THE VENUE &amp; 'BLUE' TRANSPORTATION">
+            LOCAȚIA &amp; TRANSPORTUL CU „BLUE”
+          </h2>
+          <p class="section-subtitle" data-ro="În mijlocul unei păduri de stejari cu arbori uriași, la câteva minute de București, cu transport asigurat de la Metrou Pipera." data-en="Set in the middle of a majestic oak forest with towering trees minutes from Bucharest, with complimentary 'Blue' transport from Pipera Metro.">
+            În mijlocul unei păduri de stejari cu arbori uriași, la câteva minute de București, cu transport asigurat de la Metrou Pipera.
+          </p>
+        </div>
+
+        <div class="venue-transport-grid">
+          <!-- Venue Card: Padurile Regale (Authentic Oak Forest) -->
+          <article class="venue-card">
+            <div class="card-media-header">
+              <img src="assets/venue_padurile_regale.jpg" alt="Pădurile Regale Corbeanca - În mijlocul pădurii de stejari uriași" id="venue-img" />
+              <span class="card-media-badge" data-ro="LOCAȚIA NUNȚII • PĂDURE DE STEJARI" data-en="WEDDING VENUE • ANCIENT OAK FOREST">LOCAȚIA NUNȚII • PĂDURE DE STEJARI</span>
+            </div>
+            <div class="card-body">
+              <div>
+                <h3>PĂDURILE REGALE</h3>
+                <div class="location-address">
+                  <span>🌳</span>
+                  <span>Strada Pădurii, Corbeanca, Județul Ilfov</span>
+                </div>
+                <p data-ro="Am ales Pădurile Regale (padurileregale.ro) pentru că se află chiar în mijlocul unei păduri spectaculoase de stejari cu arbori uriași. Este un spațiu cald din lemn masiv, terase deschise și lumini feerice suspendate sub coroanele stejarilor seculari — cadrul natural perfect pentru doi îndrăgostiți de munte și pădure." data-en="We chose Pădurile Regale (padurileregale.ro) because it sits directly in the middle of a breathtaking oak forest with huge, towering trees. Built with warm natural timber decks and enchanting lights strung beneath the ancient oak canopy — it is the ultimate natural sanctuary for two mountain and forest lovers.">
+                  Am ales Pădurile Regale (padurileregale.ro) pentru că se află chiar în mijlocul unei păduri spectaculoase de stejari cu arbori uriași. Este un spațiu cald din lemn masiv, terase deschise și lumini feerice suspendate sub coroanele stejarilor seculari — cadrul natural perfect pentru doi îndrăgostiți de munte și pădure.
+                </p>
+
+                <ul class="feature-list">
+                  <li>
+                    <span class="feature-icon">✓</span>
+                    <span data-ro="Ceremonie în aer liber sub stejarii uriași (ora 18:00)" data-en="Outdoor ceremony beneath towering oak trees (18:00)">Ceremonie în aer liber sub stejarii uriași (ora 18:00)</span>
+                  </li>
+                  <li>
+                    <span class="feature-icon">✓</span>
+                    <span data-ro="Petrecere în inima pădurii de stejari (ora 19:00 – între 02:00 și 05:00)" data-en="Celebration in the heart of the oak forest (19:00 – between 2:00 &amp; 5:00 AM)">Petrecere în inima pădurii de stejari (ora 19:00 – între 02:00 și 05:00)</span>
+                  </li>
+                  <li>
+                    <span class="feature-icon">✓</span>
+                    <span data-ro="Parcare privată generoasă în incinta pădurii (pentru cei cu mașina personală)" data-en="Spacious complimentary private parking on site">Parcare privată generoasă în incinta pădurii (pentru cei cu mașina personală)</span>
+                  </li>
+                </ul>
+              </div>
+
+              <div class="card-actions-row">
+                <a href="https://maps.google.com/?q=Padurile+Regale+Corbeanca" target="_blank" rel="noopener noreferrer" class="btn-action-secondary">
+                  <span>🗺️</span> Google Maps
+                </a>
+                <a href="https://waze.com/ul?q=Padurile%20Regale%20Corbeanca" target="_blank" rel="noopener noreferrer" class="btn-action-secondary">
+                  <span>🚗</span> Waze
+                </a>
+                <a href="https://padurileregale.ro/" target="_blank" rel="noopener noreferrer" class="btn-action-secondary">
+                  <span>🌐</span> padurileregale.ro
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Transport Card: Blue from Pipera Metro (Using Real Photo of Ioana & Andrei) -->
+          <article class="transport-card">
+            <div class="card-media-header">
+              <img src="assets/real_09_swiss_kiss.jpg" alt="Transport Blue de la Metrou Pipera la Pădurile Regale - Ioana și Andrei" style="object-position: center 35%;" />
+              <span class="card-media-badge" style="border-color: #6cb4dc; color: #9ad8ff;" data-ro="TRANSPORT ASIGURAT • FĂRĂ GRIJI" data-en="COMPLIMENTARY TRANSPORT">TRANSPORT ASIGURAT • FĂRĂ GRIJI</span>
+            </div>
+            <div class="card-body">
+              <div>
+                <h3 data-ro="TRANSPORT CU „BLUE” DIN PIPERA" data-en="TRANSPORT VIA 'BLUE' FROM PIPERA">TRANSPORT CU „BLUE” DIN PIPERA</h3>
+                <div class="location-address">
+                  <span>🚇</span>
+                  <span data-ro="Punct de Îmbarcare: Stația de Metrou Pipera" data-en="Pickup Point: Pipera Metro Station">Punct de Îmbarcare: Stația de Metrou Pipera</span>
+                </div>
+                <p data-ro="Ne dorim să ciocnim împreună un pahar de șampanie și să dansăm până dimineața! De aceea, punem la dispoziția tuturor invitaților transport gratuit dus-întors asigurat de flota electrică „Blue”, cu plecare direct de la Stația de Metrou Pipera." data-en="We want everyone to raise a glass of champagne and dance until morning! That's why we provide complimentary round-trip transport via the 'Blue' electric fleet departing directly from Pipera Metro Station.">
+                  Ne dorim să ciocnim împreună un pahar de șampanie și să dansăm până dimineața! De aceea, punem la dispoziția tuturor invitaților transport gratuit dus-întors asigurat de flota electrică „Blue”, cu plecare direct de la Stația de Metrou Pipera.
+                </p>
+
+                <!-- Blue Timetable Highlight Box -->
+                <div class="blue-shuttle-box">
+                  <div class="blue-shuttle-header">
+                    <span style="font-size: 0.8rem; text-transform: uppercase; letter-spacing: 1px; color: #9ad8ff;" data-ro="ORAR PLECARE &amp; RETUR" data-en="SHUTTLE TIMETABLE">ORAR PLECARE &amp; RETUR</span>
+                    <span class="blue-logo-badge">BLUE RIDE</span>
+                  </div>
+                  <div class="shuttle-timetable">
+                    <div class="shuttle-slot">
+                      <strong data-ro="Tur 1: 17:15 – 17:35" data-en="Wave 1: 17:15 – 17:35">Tur 1: 17:15 – 17:35</strong>
+                      <span data-ro="Metrou Pipera → Ceremonie (18:00)" data-en="Pipera Metro → Ceremony (18:00)">Metrou Pipera → Ceremonie (18:00)</span>
+                    </div>
+                    <div class="shuttle-slot">
+                      <strong data-ro="Tur 2: 18:15 – 18:35" data-en="Wave 2: 18:15 – 18:35">Tur 2: 18:15 – 18:35</strong>
+                      <span data-ro="Metrou Pipera → Petrecere (19:00)" data-en="Pipera Metro → Party (19:00)">Metrou Pipera → Petrecere (19:00)</span>
+                    </div>
+                    <div class="shuttle-slot" style="grid-column: 1 / -1;">
+                      <strong data-ro="Retur Final Petrecere: 02:00 – 05:00 dimineața" data-en="Party Finale Return: 2:00 AM – 5:00 AM">Retur Final Petrecere: 02:00 – 05:00 dimineața</strong>
+                      <span data-ro="Pădurile Regale → Metrou Pipera / București (curse asigurate pe tot intervalul 02:00–05:00)" data-en="Pădurile Regale → Pipera Metro / Bucharest (continuous rides throughout 2:00–5:00 AM)">Pădurile Regale → Metrou Pipera / București (curse asigurate pe tot intervalul 02:00–05:00)</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card-actions-row">
+                <a href="#confirmari" id="btn-select-blue-transport" class="btn-action-blue">
+                  <span>🚙</span>
+                  <span data-ro="Rezervă Loc cu Blue în Formularul RSVP" data-en="Reserve Your Blue Shuttle Seat in RSVP">Rezervă Loc cu Blue în Formularul RSVP</span>
+                </a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONFIRMARI / RSVP SECTION (WITH LIVE ALPINE SKI-PASS PREVIEW) -->
+    <section id="confirmari" class="section-padding topo-pattern-light" style="background-color: var(--bg-snow-alt);">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <span>✉️</span>
+            <span data-ro="CONFIRMĂRI • PÂNĂ LA 15 APRILIE 2027" data-en="RSVP • PLEASE REPLY BY APRIL 15, 2027">CONFIRMĂRI • PÂNĂ LA 15 APRILIE 2027</span>
+          </div>
+          <h2 class="section-title" data-ro="DĂ-NE DE VESTE!" data-en="LET US KNOW IF YOU CAN MAKE IT!">
+            DĂ-NE DE VESTE!
+          </h2>
+          <p class="section-subtitle" data-ro="Completează formularul de mai jos pentru a-ți emite permisul de acces pe vârf (Alpine Wedding Ski-Pass) și a rezerva transportul cu Blue." data-en="Fill out the form below to generate your personalized Alpine Wedding Ski-Pass and reserve your Blue shuttle seat.">
+            Completează formularul de mai jos pentru a-ți emite permisul de acces pe vârf (Alpine Wedding Ski-Pass) și a rezerva transportul cu Blue.
+          </p>
+        </div>
+
+        <div class="rsvp-layout">
+          <!-- RSVP Form Card -->
+          <div class="rsvp-form-card">
+            <form id="rsvp-form">
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="rsvp-name" class="form-label" data-ro="Nume și Prenume *" data-en="Full Name *">Nume și Prenume *</label>
+                  <input type="text" id="rsvp-name" class="form-control" required placeholder="Ex: Alex &amp; Maria Popescu" data-ro="Ex: Alex &amp; Maria Popescu" data-en="e.g. Alex &amp; Maria Popescu" />
+                </div>
+                <div class="form-group">
+                  <label for="rsvp-phone" class="form-label" data-ro="Telefon *" data-en="Phone Number *">Telefon *</label>
+                  <input type="tel" id="rsvp-phone" class="form-control" required placeholder="Ex: 0722 123 456" data-ro="Ex: 0722 123 456" data-en="e.g. +40 722 123 456" />
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" data-ro="Prezență? (DA / NU) *" data-en="Will You Attend? (YES / NO) *">Prezență? (DA / NU) *</label>
+                <div class="radio-pills-group">
+                  <label class="radio-pill-label">
+                    <input type="radio" name="attendance" value="yes" checked />
+                    <span class="radio-pill-box">
+                      <span>🥂</span>
+                      <span data-ro="DA, abia aștept să fim alături!" data-en="YES, can't wait to celebrate!">DA, abia aștept să fim alături!</span>
+                    </span>
+                  </label>
+                  <label class="radio-pill-label">
+                    <input type="radio" name="attendance" value="no" />
+                    <span class="radio-pill-box">
+                      <span>💌</span>
+                      <span data-ro="NU pot ajunge, vă trimit gânduri bune" data-en="NO, sending our warmest wishes">NU pot ajunge, vă trimit gânduri bune</span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-grid-2">
+                <div class="form-group">
+                  <label for="rsvp-guests" class="form-label" data-ro="Număr Persoane *" data-en="Number of Guests *">Număr Persoane *</label>
+                  <select id="rsvp-guests" class="form-control">
+                    <option value="1" data-ro="1 Persoană" data-en="1 Guest">1 Persoană</option>
+                    <option value="2" selected data-ro="2 Persoane" data-en="2 Guests">2 Persoane</option>
+                    <option value="3" data-ro="3 Persoane (Familie)" data-en="3 Guests (Family)">3 Persoane (Familie)</option>
+                    <option value="4" data-ro="4 Persoane (Familie)" data-en="4 Guests (Family)">4 Persoane (Familie)</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label for="rsvp-menu" class="form-label" data-ro="Preferințe Culinare / Meniu" data-en="Dietary / Menu Preference">Preferințe Culinare / Meniu</label>
+                  <select id="rsvp-menu" class="form-control">
+                    <option value="standard" data-ro="Meniu Standard Gourmet" data-en="Standard Gourmet Menu">Meniu Standard Gourmet</option>
+                    <option value="vegetarian" data-ro="Meniu Vegetarian" data-en="Vegetarian Menu">Meniu Vegetarian</option>
+                    <option value="vegan" data-ro="Meniu Vegan / De Post" data-en="Vegan Menu">Meniu Vegan / De Post</option>
+                    <option value="glutenfree" data-ro="Fără Gluten / Alergii speciale" data-en="Gluten-Free / Allergies">Fără Gluten / Alergii speciale</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" data-ro="Transport către Pădurile Regale *" data-en="Transportation Option *">Transport către Pădurile Regale *</label>
+                <div class="radio-pills-group">
+                  <label class="radio-pill-label">
+                    <input type="radio" name="transport" value="blue_pipera" checked />
+                    <span class="radio-pill-box">
+                      <span>🚙</span>
+                      <span data-ro="Doresc transport cu „Blue” de la Metrou Pipera" data-en="I want 'Blue' transport from Pipera Metro">Doresc transport cu „Blue” de la Metrou Pipera</span>
+                    </span>
+                  </label>
+                  <label class="radio-pill-label">
+                    <input type="radio" name="transport" value="personal_car" />
+                    <span class="radio-pill-box">
+                      <span>🚗</span>
+                      <span data-ro="Vin cu mașina personală (Parcare asigurată)" data-en="Driving personal car (Free venue parking)">Vin cu mașina personală (Parcare asigurată)</span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="rsvp-song" class="form-label" data-ro="Melodia care te scoate sigur la dans 🎶" data-en="Song that guarantees you on the dance floor 🎶">Melodia care te scoate sigur la dans 🎶</label>
+                <input type="text" id="rsvp-song" class="form-control" placeholder="Ex: ABBA - Dancing Queen / Subcarpați..." data-ro="Ex: ABBA - Dancing Queen / Subcarpați..." data-en="e.g. ABBA - Dancing Queen / Queen - Don't Stop Me Now" />
+              </div>
+
+              <div class="form-group">
+                <label for="rsvp-notes" class="form-label" data-ro="Alte mențiuni (opțional - ex: oră preferată Blue, scaun copil, alergii)" data-en="Additional Notes (optional - e.g. preferred Blue wave, high chair, allergies)">Alte mențiuni (opțional - ex: oră preferată Blue, scaun copil, alergii)</label>
+                <textarea id="rsvp-notes" rows="3" class="form-control" placeholder="Orice detaliu care ne ajută să vă oferim o seară perfectă..." data-ro="Orice detaliu care ne ajută să vă oferim o seară perfectă..." data-en="Any detail that helps us make your evening unforgettable..."></textarea>
+              </div>
+
+              <button type="submit" class="btn-primary-gold" style="width: 100%; justify-content: center; padding: 1.1rem;" id="submit-rsvp-btn">
+                <span>⛷️</span>
+                <span data-ro="TRIMITE CONFIRMAREA &amp; EMITE SKI-PASS-UL" data-en="SUBMIT RSVP &amp; GENERATE ALPINE SKI-PASS">TRIMITE CONFIRMAREA &amp; EMITE SKI-PASS-UL</span>
+              </button>
+
+              <!-- Post-submission confirmation banner -->
+              <div id="rsvp-confirmation-banner" style="display: none; margin-top: 1.5rem; padding: 1.25rem; background: #0f2920; border: 1px solid var(--accent-gold); border-radius: var(--radius-md); color: #fff; text-align: center;">
+                <h4 style="font-family: var(--font-display); color: var(--accent-gold-light); font-size: 1.1rem; margin-bottom: 0.4rem;" data-ro="🎉 CONFIRMARE ÎNREGISTRATĂ CU SUCCES!" data-en="🎉 RSVP CONFIRMED SUCCESSFULLY!">
+                  🎉 CONFIRMARE ÎNREGISTRATĂ CU SUCCES!
+                </h4>
+                <p style="font-size: 0.88rem; color: var(--text-muted-light); margin-bottom: 1rem;" data-ro="Permisul tău Alpine Ski-Pass a fost emis în dreapta! Poți trimite detaliile direct pe WhatsApp către Ioana &amp; Andrei." data-en="Your Alpine Ski-Pass is ready! You can also send your confirmation directly via WhatsApp.">
+                  Permisul tău Alpine Ski-Pass a fost emis în dreapta! Poți trimite detaliile direct pe WhatsApp către Ioana &amp; Andrei.
+                </p>
+                <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+                  <a href="#" id="btn-whatsapp-share" target="_blank" rel="noopener noreferrer" class="btn-pill-sm" style="background: #25D366; border-color: #25D366; color: #fff; text-decoration: none; padding: 0.55rem 1.1rem;">
+                    💬 <span data-ro="Trimite și pe WhatsApp" data-en="Send via WhatsApp">Trimite și pe WhatsApp</span>
+                  </a>
+                  <button type="button" id="btn-print-pass" class="btn-pill-sm">
+                    🖨️ <span data-ro="Printează / Salvează Pass" data-en="Print / Save Pass">Printează / Salvează Pass</span>
+                  </button>
+                </div>
+              </div>
+            </form>
+
+            <!-- Direct Telephone Confirmation Strip (matching ioana-andrei.ro/confirmari) -->
+            <div class="direct-contact-strip">
+              <div>
+                <strong style="display: block; font-family: var(--font-display); font-size: 0.95rem; color: var(--text-dark);" data-ro="CONFIRMARE TELEFONICĂ DIRECTĂ" data-en="DIRECT PHONE CONFIRMATION">
+                  CONFIRMARE TELEFONICĂ DIRECTĂ
+                </strong>
+                <span style="font-size: 0.82rem; color: var(--text-muted-dark);" data-ro="Ne puteți suna sau scrie oricând pe WhatsApp:" data-en="Feel free to call or message us anytime on WhatsApp:">
+                  Ne puteți suna sau scrie oricând pe WhatsApp:
+                </span>
+              </div>
+              <div style="display: flex; gap: 1.25rem; flex-wrap: wrap;">
+                <div class="direct-contact-item">
+                  <div class="contact-avatar">I</div>
+                  <div>
+                    <strong style="display: block; font-size: 0.88rem;">Ioana</strong>
+                    <a href="tel:+40700000001" style="font-size: 0.8rem; color: var(--accent-blue); text-decoration: none; font-weight: 600;">+40 722 ••• •••</a>
+                  </div>
+                </div>
+                <div class="direct-contact-item">
+                  <div class="contact-avatar">A</div>
+                  <div>
+                    <strong style="display: block; font-size: 0.88rem;">Andrei</strong>
+                    <a href="tel:+40700000002" style="font-size: 0.8rem; color: var(--accent-blue); text-decoration: none; font-weight: 600;">+40 723 ••• •••</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Interactive Alpine Ski Pass Preview -->
+          <div class="ski-pass-container">
+            <div class="ski-pass-card" id="ski-pass-ticket">
+              <div class="ski-pass-lanyard-hole"></div>
+              <div class="ski-pass-header">
+                <div class="ski-pass-resort">PĂDURILE REGALE • ALT. 2027M</div>
+                <div class="ski-pass-title">IOANA &amp; ANDREI</div>
+                <div style="font-size: 0.78rem; color: var(--accent-gold-light); letter-spacing: 1.5px; margin-top: 0.2rem;">
+                  ALPINE WEDDING VIP SKI-PASS
+                </div>
+              </div>
+
+              <div class="ski-pass-body">
+                <div class="pass-field-row">
+                  <span class="pass-field-label" data-ro="TITULAR PASS" data-en="PASS HOLDER">TITULAR PASS</span>
+                  <span class="pass-field-val" id="pass-holder-val">Invitatul Nostru Drag</span>
+                </div>
+                <div class="pass-field-row">
+                  <span class="pass-field-label" data-ro="DATA ASCENSIUNII" data-en="ASCENT DATE">DATA ASCENSIUNII</span>
+                  <span class="pass-field-val highlight-gold">08 MAI 2027</span>
+                </div>
+                <div class="pass-field-row">
+                  <span class="pass-field-label" data-ro="STATUS PREZENȚĂ" data-en="ATTENDANCE STATUS">STATUS PREZENȚĂ</span>
+                  <span class="pass-field-val" id="pass-status-val" style="color: #6be695;">CONFIRMAT • PE PÂRTIE</span>
+                </div>
+                <div class="pass-field-row">
+                  <span class="pass-field-label" data-ro="NUMĂR PERSOANE" data-en="PARTY SIZE">NUMĂR PERSOANE</span>
+                  <span class="pass-field-val" id="pass-guests-val">2 Persoane</span>
+                </div>
+                <div class="pass-field-row">
+                  <span class="pass-field-label" data-ro="PROGRAM ACCES" data-en="ACCESS HOURS">PROGRAM ACCES</span>
+                  <span class="pass-field-val">18:00 Ceremonie • 19:00–05:00 Party</span>
+                </div>
+                <div class="pass-field-row">
+                  <span class="pass-field-label" data-ro="TRANSPORT ASIGURAT" data-en="TRANSPORTATION">TRANSPORT ASIGURAT</span>
+                  <span class="pass-field-val highlight-blue" id="pass-transport-val">SHUTTLE BLUE (Metrou Pipera)</span>
+                </div>
+                <div class="pass-field-row" style="border-bottom: none;">
+                  <span class="pass-field-label" data-ro="MENIU ALES" data-en="MENU PREFERENCE">MENIU ALES</span>
+                  <span class="pass-field-val" id="pass-menu-val">Meniu Tradițional &amp; Gourmet</span>
+                </div>
+              </div>
+
+              <div class="ski-pass-footer">
+                <div class="barcode-graphic" aria-hidden="true"></div>
+                <div class="pass-serial" id="pass-serial-code">IA-2027-0508-VIP</div>
+                <span style="font-size: 0.7rem; color: var(--text-muted-light); text-align: center;" data-ro="Acest pass garantează accesul în pădurea de stejari, la dans și transport cu Blue din Pipera!" data-en="Valid for unlimited champagne, dancing under the oaks &amp; Blue shuttle rides from Pipera!">
+                  Acest pass garantează accesul în pădurea de stejari, la dans și transport cu Blue din Pipera!
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 10-PHOTO REAL GALLERY OF IOANA & ANDREI -->
+    <section id="galerie-foto" class="section-padding topo-pattern-light">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <span>⛷️</span>
+            <span data-ro="AMINTIRILE NOASTRE DE PE MUNTE" data-en="OUR ALPINE MEMORIES">AMINTIRILE NOASTRE DE PE MUNTE</span>
+          </div>
+          <h2 class="section-title" data-ro="IOANA &amp; ANDREI • EXPEDIȚII ÎN DOI" data-en="IOANA &amp; ANDREI • EXPEDITIONS TOGETHER">
+            IOANA &amp; ANDREI • EXPEDIȚII ÎN DOI
+          </h2>
+          <p class="section-subtitle" data-ro="Câteva dintre momentele noastre reale de pe pârtiile din Alpi, Zermatt, Dolomiți și lacurile înghețate — clic pe orice fotografie pentru a o mări." data-en="A glimpse into our real mountain adventures across the Alps, Zermatt, the Dolomites, and frozen lakes — click any photo to enlarge.">
+            Câteva dintre momentele noastre reale de pe pârtiile din Alpi, Zermatt, Dolomiți și lacurile înghețate — clic pe orice fotografie pentru a o mări.
+          </p>
+        </div>
+
+        <div class="gallery-grid-10">
+          <!-- Photo 1 -->
+          <div class="gallery-card">
+            <img src="assets/real_01_lake_embrace.jpg" alt="Ioana și Andrei lângă lacul alpin sub Matterhorn" />
+            <div class="gallery-card-overlay">
+              <span class="gallery-caption-text" data-ro="1. Îmbrățișare lângă lacul alpin sub Matterhorn" data-en="1. Embracing by the alpine lake beneath the Matterhorn">1. Îmbrățișare lângă lacul alpin sub Matterhorn</span>
+            </div>
+          </div>
+          <!-- Photo 2 -->
+          <div class="gallery-card">
+            <img src="assets/real_02_ring_matterhorn.jpg" alt="Inelul de logodnă la Matterhorn" />
+            <div class="gallery-card-overlay">
+              <span class="gallery-caption-text" data-ro="2. „DA!” în fața vârfului Matterhorn 💍" data-en="2. 'YES!' in front of the Matterhorn peak 💍">2. „DA!” în fața vârfului Matterhorn 💍</span>
+            </div>
+          </div>
+          <!-- Photo 3 -->
+          <div class="gallery-card">
+            <img src="assets/real_03_heart_frame.jpg" alt="Ioana și Andrei în Zermatt" />
+            <div class="gallery-card-overlay">
+              <span class="gallery-caption-text" data-ro="3. În rama inimii din Zermatt • Elveția" data-en="3. Inside the Zermatt wooden heart frame • Switzerland">3. În rama inimii din Zermatt • Elveția</span>
+            </div>
+          </div>
+          <!-- Photo 4 -->
+          <div class="gallery-card">
+            <img src="assets/real_04_ski_goggles.jpg" alt="Ioana și Andrei la schi" />
+            <div class="gallery-card-overlay">
+              <span class="gallery-caption-text" data-ro="4. Cu schiurile și ochelarii pe pârtie ⛷️" data-en="4. Ski helmets &amp; goggles on the snowy slopes ⛷️">4. Cu schiurile și ochelarii pe pârtie ⛷️</span>
+            </div>
+          </div>
+          <!-- Photo 5 -->
+          <div class="gallery-card">
+            <img src="assets/real_05_glacier_heart.jpg" alt="Ioana și Andrei pe ghețar" />
+            <div class="gallery-card-overlay">
+              <span class="gallery-caption-text" data-ro="5. Inimă pe ghețar la peste 3.000m altitudine" data-en="5. Making a heart on the glacier above 3,000m">5. Inimă pe ghețar la peste 3.000m altitudine</span>
+            </div>
+          </div>
+          <!-- Photo 6 -->
+          <div class="gallery-card">
+            <img src="assets/real_06_dolomites_lift.jpg" alt="Ioana și Andrei în Dolomiți" />
+            <div class="gallery-card-overlay">
+              <span class="gallery-caption-text" data-ro="6. Zâmbete și fericire în Dolomiți" data-en="6. Lifting each other high by a turquoise Dolomites lake">6. Zâmbete și fericire în Dolomiți</span>
+            </div>
+          </div>
+          <!-- Photo 7 -->
+          <div class="gallery-card">
+            <img src="assets/real_07_ice_skating.jpg" alt="Ioana și Andrei la patinaj pe lacul înghețat" />
+            <div class="gallery-card-overlay">
+              <span class="gallery-caption-text" data-ro="7. Patinaj pe lacul înghețat din inima munților ⛸️" data-en="7. Ice skating together on a frozen mountain lake ⛸️">7. Patinaj pe lacul înghețat din inima munților ⛸️</span>
+            </div>
+          </div>
+          <!-- Photo 8 -->
+          <div class="gallery-card">
+            <img src="assets/real_08_xc_skis.jpg" alt="Schi fond în vale" />
+            <div class="gallery-card-overlay">
+              <span class="gallery-caption-text" data-ro="8. Schi fond în valea înzăpezită 🎿" data-en="8. Cross-country skis forming a heart in the valley 🎿">8. Schi fond în valea înzăpezită 🎿</span>
+            </div>
+          </div>
+          <!-- Photo 9 -->
+          <div class="gallery-card">
+            <img src="assets/real_09_swiss_kiss.jpg" alt="Sărut pe străduțele din Elveția" />
+            <div class="gallery-card-overlay">
+              <span class="gallery-caption-text" data-ro="9. Sărut pe străduțele pavate din Alpii Elvețieni 🇨🇭" data-en="9. A kiss on cobblestone streets in the Swiss Alps 🇨🇭">9. Sărut pe străduțele pavate din Alpii Elvețieni 🇨🇭</span>
+            </div>
+          </div>
+          <!-- Photo 10 -->
+          <div class="gallery-card">
+            <img src="assets/real_10_holding_hands.jpg" alt="De mână privind spre Matterhorn" />
+            <div class="gallery-card-overlay">
+              <span class="gallery-caption-text" data-ro="10. De mână privind spre vârful Matterhorn" data-en="10. Holding hands looking toward the Matterhorn peak">10. De mână privind spre vârful Matterhorn</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIGHTBOX MODAL FOR GALLERY -->
+    <div class="lightbox-modal" id="lightbox-modal" role="dialog" aria-modal="true" aria-label="Galerie Foto Mărită">
+      <button type="button" class="lightbox-close" id="lightbox-close" aria-label="Închide">×</button>
+      <button type="button" class="lightbox-nav prev" id="lightbox-prev" aria-label="Fotografia anterioară">‹</button>
+      <div class="lightbox-content">
+        <img src="assets/real_01_lake_embrace.jpg" alt="Fotografie mărită" id="lightbox-img" />
+        <div class="lightbox-caption" id="lightbox-caption">Ioana &amp; Andrei</div>
+      </div>
+      <button type="button" class="lightbox-nav next" id="lightbox-next" aria-label="Fotografia următoare">›</button>
+    </div>
+
+    <!-- PHOTO UPLOAD SECTION (> Încarcă aici poze de la nuntă <) -->
+    <section id="galerie" class="section-padding topo-pattern-dark dark-section">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag gold">
+            <span>📸</span>
+            <span data-ro="ALBUMUL COMUN AL NUNȚII" data-en="SHARED WEDDING PHOTO ALBUM">ALBUMUL COMUN AL NUNȚII</span>
+          </div>
+          <h2 class="section-title" data-ro="&gt; ÎNCARCĂ AICI POZE DE LA NUNTĂ &lt;" data-en="&gt; UPLOAD YOUR WEDDING PHOTOS HERE &lt;">
+            &gt; ÎNCARCĂ AICI POZE DE LA NUNTĂ &lt;
+          </h2>
+          <p class="section-subtitle" data-ro="Ați surprins un moment amuzant sub stejarii seculari, pe ringul de dans sau în mașina Blue? Încărcați fotografiile și filmulețele voastre direct aici!" data-en="Captured a magical moment under the giant oaks, on the dance floor, or in the Blue shuttle? Share your photos with us right here!">
+            Ați surprins un moment amuzant sub stejarii seculari, pe ringul de dans sau în mașina Blue? Încărcați fotografiile și filmulețele voastre direct aici!
+          </p>
+        </div>
+
+        <div class="upload-dropzone" id="photo-dropzone" role="button" tabindex="0">
+          <input type="file" id="photo-file-input" multiple accept="image/*" style="display: none;" />
+          <div style="font-size: 3rem; margin-bottom: 0.85rem;">🏔️📷✨</div>
+          <h3 style="font-family: var(--font-display); font-size: 1.4rem; color: #ffffff; margin-bottom: 0.5rem;" data-ro="APASĂ AICI SAU TRAGE POZELE DIN TELEFON / GALERIE" data-en="CLICK HERE OR DRAG &amp; DROP PHOTOS FROM YOUR PHONE">
+            APASĂ AICI SAU TRAGE POZELE DIN TELEFON / GALERIE
+          </h3>
+          <p style="font-size: 0.9rem; color: var(--text-muted-light); margin-bottom: 1.25rem;" data-ro="Acceptăm instantanee de pe pârtie, selfie-uri din pădurea de stejari Pădurile Regale și amintiri de neuitat!" data-en="Upload your favorite wedding snapshots, group selfies, and mountain memories!">
+            Acceptăm instantanee de pe pârtie, selfie-uri din pădurea de stejari Pădurile Regale și amintiri de neuitat!
+          </p>
+          <span class="btn-primary-gold" style="pointer-events: none;" data-ro="Selectează Fotografii din Telefon" data-en="Select Photos from Device">Selectează Fotografii din Telefon</span>
+          <p id="upload-status-msg" style="margin-top: 1rem; font-weight: 600; font-size: 0.9rem;"></p>
+        </div>
+
+        <div class="uploaded-preview-grid" id="uploaded-photos-grid">
+          <div class="uploaded-thumb">
+            <img src="assets/real_01_lake_embrace.jpg" alt="Ioana și Andrei lângă lacul alpin" />
+          </div>
+          <div class="uploaded-thumb">
+            <img src="assets/venue_padurile_regale.jpg" alt="Pădurile Regale - Pădurea de stejari seculari" />
+          </div>
+          <div class="uploaded-thumb">
+            <img src="assets/real_04_ski_goggles.jpg" alt="Ioana și Andrei pe pârtie" />
+          </div>
+          <div class="uploaded-thumb">
+            <img src="assets/real_06_dolomites_lift.jpg" alt="Ioana și Andrei în Dolomiți" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section id="faq" class="section-padding topo-pattern-light">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">
+            <span>❓</span>
+            <span data-ro="TOT CE TREBUIE SĂ ȘTIȚI" data-en="EVERYTHING YOU NEED TO KNOW">TOT CE TREBUIE SĂ ȘTIȚI</span>
+          </div>
+          <h2 class="section-title" data-ro="ÎNTREBĂRI FRECVENTE (FAQ)" data-en="FREQUENTLY ASKED QUESTIONS">
+            ÎNTREBĂRI FRECVENTE (FAQ)
+          </h2>
+          <p class="section-subtitle" data-ro="Răspunsuri rapide despre transportul cu Blue din Pipera, ținută și programul până între 02:00 și 05:00 dimineața." data-en="Quick answers about the Blue shuttle from Pipera Metro, dress code, and party schedule until 2:00–5:00 AM.">
+            Răspunsuri rapide despre transportul cu Blue din Pipera, ținută și programul până între 02:00 și 05:00 dimineața.
+          </p>
+        </div>
+
+        <div class="faq-list">
+          <!-- FAQ 1: Blue Transport -->
+          <div class="faq-item open">
+            <button type="button" class="faq-question">
+              <span data-ro="1. Cum funcționează transportul cu „Blue” de la stația de metrou Pipera?" data-en="1. How does the 'Blue' transport from Pipera Metro Station work?">1. Cum funcționează transportul cu „Blue” de la stația de metrou Pipera?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p data-ro="Este foarte simplu! Dacă bifați opțiunea de transport cu Blue în formularul de confirmare (RSVP), veți avea loc asigurat în mașinile electrice Blue care pleacă de la ieșirea principală a Stației de Metrou Pipera către Pădurile Regale (primul val între 17:15–17:35 pentru Ceremonia de la 18:00, al doilea val între 18:15–18:35 pentru Petrecerea de la 19:00). De asemenea, la finalul petrecerii (între orele 02:00 și 05:00 dimineața), mașinile Blue vă vor readuce în siguranță în București." data-en="It's effortless! Simply select the 'Blue' transport option in the RSVP form above. Dedicated electric Blue vehicles will pick up guests right outside Pipera Metro Station (Wave 1: 17:15–17:35 for the 18:00 Ceremony; Wave 2: 18:15–18:35 for the 19:00 Party) and bring you directly to Pădurile Regale. Return rides run continuously between 2:00 AM and 5:00 AM.">
+                Este foarte simplu! Dacă bifați opțiunea de transport cu Blue în formularul de confirmare (RSVP), veți avea loc asigurat în mașinile electrice Blue care pleacă de la ieșirea principală a Stației de Metrou Pipera către Pădurile Regale (primul val între 17:15–17:35 pentru Ceremonia de la 18:00, al doilea val între 18:15–18:35 pentru Petrecerea de la 19:00). De asemenea, la finalul petrecerii (între orele 02:00 și 05:00 dimineața), mașinile Blue vă vor readuce în siguranță în București.
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 2: Dress Code -->
+          <div class="faq-item">
+            <button type="button" class="faq-question">
+              <span data-ro="2. Există un Dress Code recomandat? (Pot veni în clăpari? 😄)" data-en="2. Is there a recommended Dress Code? (Should I wear ski boots? 😄)">2. Există un Dress Code recomandat? (Pot veni în clăpari? 😄)</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p data-ro="Lăsăm clăparii în vacanță! Dress code-ul este „Black Tie Optional / Forest &amp; Alpine Chic” (ținută elegantă de seară). Pentru că evenimentul are loc în mijlocul pădurii seculare de stejari și pe terase din lemn, recomandăm doamnelor și domnișoarelor încălțăminte comodă sau o pereche de balerini/pantofi de schimb pentru dansul care ține până între 02:00 și 05:00 dimineața!" data-en="Leave the ski boots at home! Our dress code is 'Black Tie Optional / Forest &amp; Alpine Chic' (elegant evening attire). Since the venue is set in the middle of a natural oak forest with wooden decks, we recommend comfortable heels/block heels or bringing dancing flats for partying until 2:00–5:00 AM!">
+                Lăsăm clăparii în vacanță! Dress code-ul este „Black Tie Optional / Forest &amp; Alpine Chic” (ținută elegantă de seară). Pentru că evenimentul are loc în mijlocul pădurii seculare de stejari și pe terase din lemn, recomandăm doamnelor și domnișoarelor încălțăminte comodă sau o pereche de balerini/pantofi de schimb pentru dansul care ține până între 02:00 și 05:00 dimineața!
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 3: Parking -->
+          <div class="faq-item">
+            <button type="button" class="faq-question">
+              <span data-ro="3. Dacă venim cu mașina personală, există parcare la Pădurile Regale?" data-en="3. If we drive our own car, is there parking at Pădurile Regale?">3. Dacă venim cu mașina personală, există parcare la Pădurile Regale?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p data-ro="Da! Locația Pădurile Regale dispune de o parcare privată spațioasă, păzită și gratuită, chiar în incinta pădurii. Puteți lăsa mașina în siguranță și peste noapte dacă decideți la finalul petrecerii (între 02:00 și 05:00) să vă întoarceți cu una dintre mașinile noastre Blue!" data-en="Yes! Pădurile Regale features a large, secure, complimentary private parking lot right on site. You can even leave your car safely overnight if you decide to hop into one of our Blue shuttles between 2:00 AM and 5:00 AM!">
+                Da! Locația Pădurile Regale dispune de o parcare privată spațioasă, păzită și gratuită, chiar în incinta pădurii. Puteți lăsa mașina în siguranță și peste noapte dacă decideți la finalul petrecerii (între 02:00 și 05:00) să vă întoarceți cu una dintre mașinile noastre Blue!
+              </p>
+            </div>
+          </div>
+
+          <!-- FAQ 4: Schedule / Timing -->
+          <div class="faq-item">
+            <button type="button" class="faq-question">
+              <span data-ro="4. Care sunt orele exacte pentru Ceremonie, Petrecere și Final?" data-en="4. What are the exact times for the Ceremony, Party, and Finale?">4. Care sunt orele exacte pentru Ceremonie, Petrecere și Final?</span>
+              <span class="faq-icon">+</span>
+            </button>
+            <div class="faq-answer">
+              <p data-ro="Ceremonia începe la ora 18:00 fix sub stejarii seculari de la Pădurile Regale (vă recomandăm să sosiți între 17:40 și 17:55). Petrecerea principală începe la ora 19:00, iar finalul petrecerii este estimat între orele 02:00 și 05:00 dimineața." data-en="The Ceremony begins at 18:00 sharp beneath the giant oak trees at Pădurile Regale (we recommend arriving between 17:40 and 17:55). The Main Party starts at 19:00 and wraps up between 2:00 AM and 5:00 AM.">
+                Ceremonia începe la ora 18:00 fix sub stejarii seculari de la Pădurile Regale (vă recomandăm să sosiți între 17:40 și 17:55). Petrecerea principală începe la ora 19:00, iar finalul petrecerii este estimat între orele 02:00 și 05:00 dimineața.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER (MATCHING IOANA-ANDREI.RO EMOTIONAL CLOSING) -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="footer-motto-small" data-ro="Cu emoție și speranță în suflet," data-en="With emotion and hope in our souls,">
+        Cu emoție și speranță în suflet,
+      </p>
+      <h2 class="footer-motto-big" data-ro="VĂ INVITĂM SĂ NE FIȚI ALĂTURI" data-en="WE INVITE YOU TO CELEBRATE WITH US">
+        VĂ INVITĂM SĂ NE FIȚI ALĂTURI
+      </h2>
+      <p class="footer-motto-sub" data-ro="ÎN ZIUA CEA MARE • 8 MAI 2027" data-en="ON OUR BIG DAY • MAY 8, 2027">
+        ÎN ZIUA CEA MARE • 8 MAI 2027
+      </p>
+
+      <div style="margin: 2rem auto; width: 64px; height: 64px; border-radius: 50%; border: 1px solid var(--accent-gold); display: flex; align-items: center; justify-content: center; font-family: var(--font-display); color: var(--accent-gold); font-size: 1.2rem;">
+        I&amp;A
+      </div>
+
+      <p style="font-size: 0.82rem; color: var(--text-muted-light); letter-spacing: 1px;">
+        © 2027 Ioana &amp; Andrei • Pădurile Regale (Pădurea de Stejari Corbeanca) • Transport via Blue (Pipera)
+      </p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
