@@ -37,6 +37,11 @@ html {
   scroll-behavior: smooth;
   scroll-padding-top: 85px;
   font-size: 16px;
+  overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  overscroll-behavior-x: none;
+  touch-action: pan-y;
 }
 
 body {
@@ -45,6 +50,11 @@ body {
   background-color: var(--bg-snow);
   line-height: 1.65;
   overflow-x: hidden;
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  overscroll-behavior-x: none;
+  touch-action: pan-y;
   -webkit-font-smoothing: antialiased;
 }
 
@@ -68,8 +78,8 @@ body {
   position: fixed;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
   z-index: 999;
   opacity: 0;
@@ -2260,6 +2270,10 @@ body.mobile-nav-open .site-header {
 }
 
 @media (max-width: 640px) {
+  .section-padding {
+    padding: 3.5rem 1rem;
+  }
+
   .nav-container {
     padding: 0 0.85rem;
   }
@@ -2269,54 +2283,122 @@ body.mobile-nav-open .site-header {
     letter-spacing: 1px;
   }
 
+  .hero-section {
+    padding: 6rem 1rem 4rem;
+  }
+
+  .hero-content {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hero-title {
+    font-size: clamp(1.9rem, 8.5vw, 2.6rem);
+    letter-spacing: clamp(1.5px, 1.2vw, 3px);
+    max-width: 100%;
+    word-break: break-word;
+  }
+
+  .hero-subtitle-invite {
+    font-size: 0.88rem;
+    letter-spacing: 1.8px;
+    max-width: 100%;
+  }
+
+  .alpine-badge {
+    font-size: 0.7rem;
+    letter-spacing: 1.2px;
+    padding: 0.4rem 0.85rem;
+    max-width: 100%;
+    text-align: center;
+  }
+
+  .hero-meta-bar {
+    flex-direction: column;
+    gap: 0.75rem;
+    padding: 0.85rem 1rem;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .hero-meta-divider {
+    display: none;
+  }
+
   .countdown-grid {
     grid-template-columns: repeat(2, 1fr);
+    max-width: 100%;
+    gap: 0.65rem;
   }
+
   .form-grid-2,
   .radio-pills-group,
   .shuttle-timetable {
     grid-template-columns: 1fr;
   }
+
   .gallery-card.landscape-card {
     grid-column: span 1;
     aspect-ratio: 3/4;
   }
-  .hero-meta-bar {
+
+  .milestone-card {
     flex-direction: column;
-    gap: 0.75rem;
+    align-items: flex-start;
+    gap: 0.85rem;
+    padding: 1rem;
+    width: 100%;
+    max-width: 100%;
   }
-  .hero-meta-divider {
-    display: none;
+
+  .milestone-photo-avatar {
+    width: 54px;
+    height: 54px;
   }
+
   .ski-milestones .swiss-trail-sign {
-    width: 270px;
-    max-width: calc(100% - 22px);
-    height: 46px;
+    width: 100%;
+    max-width: calc(100% - 20px);
+    height: auto;
+    min-height: 44px;
     font-size: 0.74rem;
-    padding: 0 0.65rem 0 0.95rem;
+    padding: 0.4rem 0.65rem 0.4rem 0.95rem;
     margin-right: 18px;
   }
+
   .swiss-trail-sign::after {
     width: 16px;
   }
+
+  .schedule-card {
+    padding: 1.25rem 1rem;
+    width: 100%;
+    max-width: 100%;
+  }
+
   .schedule-card .swiss-trail-sign.sm,
   .swiss-trail-sign.sm {
-    width: 195px;
-    max-width: calc(100% - 20px);
-    height: 40px;
+    width: 100%;
+    max-width: calc(100% - 18px);
+    height: auto;
+    min-height: 38px;
     font-size: 0.68rem;
-    padding: 0 0.55rem 0 0.85rem;
+    padding: 0.35rem 0.55rem 0.35rem 0.85rem;
     margin-right: 16px;
   }
+
   .swiss-trail-sign.sm::after {
     width: 14px;
   }
+
   .schedule-time-badge {
     font-size: 1.35rem;
   }
+
   .schedule-time-badge.time-range {
     font-size: 1.18rem;
   }
+
   .upload-steps-grid {
     grid-template-columns: 1fr;
   }

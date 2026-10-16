@@ -91,6 +91,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  // Prevent horizontal page drift / wobble on touch devices
+  window.addEventListener('scroll', () => {
+    if (window.scrollX !== 0) {
+      window.scrollTo(0, window.scrollY);
+    }
+  }, { passive: true });
+
+  window.addEventListener('orientationchange', () => {
+    window.scrollTo(0, window.scrollY);
+  });
+
   // 2. Live Countdown Timer to 8 May 2027, 18:00 EEST (UTC+3)
   const targetDate = new Date('2027-05-08T18:00:00+03:00').getTime();
   const elDays = document.getElementById('cd-days');
