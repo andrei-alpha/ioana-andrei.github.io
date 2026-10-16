@@ -223,6 +223,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Google Form & Spreadsheet Integration Configuration
+  // To connect: Create a Google Form, get the pre-filled link, and paste the form URL and entry IDs here.
+  const GOOGLE_FORM_CONFIG = {
+    // Form action URL (e.g. 'https://docs.google.com/forms/d/e/1FAIpQLSc.../formResponse')
+    formUrl: '',
+    entries: {
+      name: '',       // entry.XXXXXXXXX (Nume și Prenume)
+      phone: '',      // entry.XXXXXXXXX (Telefon)
+      attendance: '', // entry.XXXXXXXXX (Prezență: DA / NU)
+      guests: '',     // entry.XXXXXXXXX (Număr Persoane)
+      menu: '',       // entry.XXXXXXXXX (Preferințe Meniu)
+      transport: '',  // entry.XXXXXXXXX (Transport)
+      song: '',       // entry.XXXXXXXXX (Melodie Dans)
+      notes: ''       // entry.XXXXXXXXX (Alte Mențiuni)
+    }
+  };
+
   // 6. Interactive Alpine Ski-Pass RSVP Live Binding
   const rsvpForm = document.getElementById('rsvp-form');
   const inputName = document.getElementById('rsvp-name');
@@ -231,6 +248,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const inputMenu = document.getElementById('rsvp-menu');
   const inputSong = document.getElementById('rsvp-song');
   const inputNotes = document.getElementById('rsvp-notes');
+  const submitRsvpBtn = document.getElementById('submit-rsvp-btn');
 
   const passHolder = document.getElementById('pass-holder-val');
   const passStatus = document.getElementById('pass-status-val');
@@ -288,6 +306,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function submitToGoogleForms(data) {
+    if (!GOOGLE_FORM_CONFIG.formUrl) {
+      return Promise.resolve();
+    }
+    const formData = new FormData();
+    const entries = GOOGLE_FORM_CONFIG.entries;
+
+    if (entries.name && data.name) formData.append(entries.name, data.name);
+    if (entries.phone && data.phone) formData.append(entries.phone, data.phone);
+    if (entries.attendance && data.attendance) formData.append(entries.attendance, data.attendance);
+    if (entries.guests && data.guests) formData.append(entries.guests, data.guests);
+    if (entries.menu && data.menu) formData.append(entries.menu, data.menu);
+    if (entries.transport && data.transport) formData.append(entries.transport, data.transport);
+    if (entries.song && data.song) formData.append(entries.song, data.song);
+    if (entries.notes && data.notes) formData.append(entries.notes, data.notes);
+
+    return fetch(GOOGLE_FORM_CONFIG.formUrl, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: formData
+    });
+  }
+
   // Listen to form changes
   if (rsvpForm) {
     rsvpForm.addEventListener('input', syncSkiPassPreview);
@@ -297,41 +338,80 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       syncSkiPassPreview();
 
-      // Generate unique serial number
-      const randomNum = Math.floor(1000 + Math.random() * 9000);
-      if (passSerial) passSerial.textContent = `IA-2027-0508-${randomNum}`;
-
-      const confirmationBox = document.getElementById('rsvp-confirmation-banner');
-      if (confirmationBox) {
-        confirmationBox.style.display = 'block';
-        confirmationBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      const originalBtnHtml = submitRsvpBtn ? submitRsvpBtn.innerHTML : '';
+      if (submitRsvpBtn) {
+        submitRsvpBtn.disabled = true;
+        submitRsvpBtn.innerHTML = `<span>⏳</span><span>${currentLang === 'ro' ? 'Se trimite confirmarea...' : 'Submitting RSVP...'}</span>`;
       }
 
-      // Prepare WhatsApp message link for instant sharing if desired
+      // Collect human-readable response data
       const nameVal = inputName.value.trim() || 'Invitat';
-      const attendVal = getRadioVal('attendance') === 'yes' ? 'DA, confirm prezența!' : 'Din păcate nu pot ajunge.';
-      const transportVal = getRadioVal('transport') === 'blue_pipera' ? 'Transport cu Blue de la Metrou Pipera' : 'Vin cu mașina personală';
+      const phoneVal = inputPhone ? inputPhone.value.trim() : '';
+      const isAttending = getRadioVal('attendance') === 'yes';
+      const attendVal = isAttending ? 'DA' : 'NU';
       const guestsVal = inputGuests.value;
-      const menuVal = inputMenu.value;
+      const menuMap = {
+        standard: 'Meniu Standard Gourmet',
+        vegetarian: 'Meniu Vegetarian',
+        vegan: 'Meniu Vegan / De Post',
+        glutenfree: 'Fără Gluten / Alergii speciale'
+      };
+      const menuVal = menuMap[inputMenu.value] || inputMenu.value;
+      const transportVal = getRadioVal('transport') === 'blue_pipera'
+        ? 'Shuttle Blue (Metrou Pipera)'
+        : 'Mașină personală (Parcare Pădurile Regale)';
       const songVal = inputSong.value.trim();
       const notesVal = inputNotes.value.trim();
 
-      const waText = encodeURIComponent(
-        `Salut Ioana & Andrei! 🏔️⛷️\n` +
-        `Confirmare nuntă 8 Mai 2027 (Pădurile Regale):\n` +
-        `• Nume: ${nameVal}\n` +
-        `• Răspuns: ${attendVal}\n` +
-        `• Persoane: ${guestsVal}\n` +
-        `• Transport: ${transportVal}\n` +
-        `• Meniu: ${menuVal}\n` +
-        (songVal ? `• Piesa de dans: ${songVal}\n` : '') +
-        (notesVal ? `• Mențiuni: ${notesVal}` : '')
-      );
+      submitToGoogleForms({
+        name: nameVal,
+        phone: phoneVal,
+        attendance: attendVal,
+        guests: guestsVal,
+        menu: menuVal,
+        transport: transportVal,
+        song: songVal,
+        notes: notesVal
+      })
+      .catch((err) => {
+        console.warn('Google Form submission notice:', err);
+      })
+      .finally(() => {
+        if (submitRsvpBtn) {
+          submitRsvpBtn.disabled = false;
+          submitRsvpBtn.innerHTML = originalBtnHtml;
+        }
 
-      const waBtn = document.getElementById('btn-whatsapp-share');
-      if (waBtn) {
-        waBtn.href = `https://wa.me/?text=${waText}`;
-      }
+        // Generate unique serial number
+        const randomNum = Math.floor(1000 + Math.random() * 9000);
+        if (passSerial) passSerial.textContent = `IA-2027-0508-${randomNum}`;
+
+        const confirmationBox = document.getElementById('rsvp-confirmation-banner');
+        if (confirmationBox) {
+          confirmationBox.style.display = 'block';
+          confirmationBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // Prepare WhatsApp message link for instant sharing if desired
+        const waAttendText = isAttending ? 'DA, confirm prezența!' : 'Din păcate nu pot ajunge.';
+        const waText = encodeURIComponent(
+          `Salut Ioana & Andrei! 🏔️⛷️\n` +
+          `Confirmare nuntă 8 Mai 2027 (Pădurile Regale):\n` +
+          `• Nume: ${nameVal}\n` +
+          `• Telefon: ${phoneVal}\n` +
+          `• Răspuns: ${waAttendText}\n` +
+          `• Persoane: ${guestsVal}\n` +
+          `• Transport: ${transportVal}\n` +
+          `• Meniu: ${menuVal}\n` +
+          (songVal ? `• Piesa de dans: ${songVal}\n` : '') +
+          (notesVal ? `• Mențiuni: ${notesVal}` : '')
+        );
+
+        const waBtn = document.getElementById('btn-whatsapp-share');
+        if (waBtn) {
+          waBtn.href = `https://wa.me/?text=${waText}`;
+        }
+      });
     });
   }
 

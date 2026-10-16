@@ -2276,121 +2276,37 @@ body {
           <h2 class="section-title" data-ro="DĂ-NE DE VESTE!" data-en="LET US KNOW IF YOU CAN MAKE IT!">
             DĂ-NE DE VESTE!
           </h2>
-          <p class="section-subtitle" data-ro="Completează formularul de mai jos pentru a-ți emite permisul de acces pe vârf (Alpine Wedding Ski-Pass) și a rezerva transportul cu Blue." data-en="Fill out the form below to generate your personalized Alpine Wedding Ski-Pass and reserve your Blue shuttle seat.">
-            Completează formularul de mai jos pentru a-ți emite permisul de acces pe vârf (Alpine Wedding Ski-Pass) și a rezerva transportul cu Blue.
+          <p class="section-subtitle" data-ro="Vă rugăm să confirmați prezența până pe 15 Aprilie 2027 prin completarea formularului oficial conectat la lista de invitați și transportul cu Blue." data-en="Please confirm your attendance by April 15, 2027 by completing the official RSVP form linked to the guest list and Blue shuttle transport.">
+            Vă rugăm să confirmați prezența până pe 15 Aprilie 2027 prin completarea formularului oficial conectat la lista de invitați și transportul cu Blue.
           </p>
         </div>
 
         <div class="rsvp-layout">
           <!-- RSVP Form Card -->
           <div class="rsvp-form-card">
-            <form id="rsvp-form">
-              <div class="form-grid-2">
-                <div class="form-group">
-                  <label for="rsvp-name" class="form-label" data-ro="Nume și Prenume *" data-en="Full Name *">Nume și Prenume *</label>
-                  <input type="text" id="rsvp-name" class="form-control" required placeholder="Ex: Alex &amp; Maria Popescu" data-ro="Ex: Alex &amp; Maria Popescu" data-en="e.g. Alex &amp; Maria Popescu" />
-                </div>
-                <div class="form-group">
-                  <label for="rsvp-phone" class="form-label" data-ro="Telefon *" data-en="Phone Number *">Telefon *</label>
-                  <input type="tel" id="rsvp-phone" class="form-control" required placeholder="Ex: 0722 123 456" data-ro="Ex: 0722 123 456" data-en="e.g. +40 722 123 456" />
-                </div>
-              </div>
+            <div style="text-align: center; margin-bottom: 1.75rem;">
+              <div style="font-size: 2.2rem; margin-bottom: 0.5rem;">💌 ⛷️</div>
+              <h3 style="font-family: var(--font-display); font-size: 1.6rem; color: var(--text-dark); margin-bottom: 0.5rem;" data-ro="FORMULAR OFICIAL DE CONFIRMARE" data-en="OFFICIAL RSVP FORM">
+                FORMULAR OFICIAL DE CONFIRMARE
+              </h3>
+              <p style="color: var(--text-muted-dark); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;" data-ro="Vă rugăm să ne confirmați prezența și preferințele de meniu &amp; transport completând formularul Google Forms de mai jos sau deschizându-l într-o filă nouă." data-en="Please confirm your attendance, party size, menu, and Blue shuttle preferences via the Google Form below or open it in a new tab.">
+                Vă rugăm să ne confirmați prezența și preferințele de meniu &amp; transport completând formularul Google Forms de mai jos sau deschizându-l într-o filă nouă.
+              </p>
 
-              <div class="form-group">
-                <label class="form-label" data-ro="Prezență? (DA / NU) *" data-en="Will You Attend? (YES / NO) *">Prezență? (DA / NU) *</label>
-                <div class="radio-pills-group">
-                  <label class="radio-pill-label">
-                    <input type="radio" name="attendance" value="yes" checked />
-                    <span class="radio-pill-box">
-                      <span>🥂</span>
-                      <span data-ro="DA, abia aștept să fim alături!" data-en="YES, can't wait to celebrate!">DA, abia aștept să fim alături!</span>
-                    </span>
-                  </label>
-                  <label class="radio-pill-label">
-                    <input type="radio" name="attendance" value="no" />
-                    <span class="radio-pill-box">
-                      <span>💌</span>
-                      <span data-ro="NU pot ajunge, vă trimit gânduri bune" data-en="NO, sending our warmest wishes">NU pot ajunge, vă trimit gânduri bune</span>
-                    </span>
-                  </label>
-                </div>
-              </div>
-
-              <div class="form-grid-2">
-                <div class="form-group">
-                  <label for="rsvp-guests" class="form-label" data-ro="Număr Persoane *" data-en="Number of Guests *">Număr Persoane *</label>
-                  <select id="rsvp-guests" class="form-control">
-                    <option value="1" data-ro="1 Persoană" data-en="1 Guest">1 Persoană</option>
-                    <option value="2" selected data-ro="2 Persoane" data-en="2 Guests">2 Persoane</option>
-                    <option value="3" data-ro="3 Persoane (Familie)" data-en="3 Guests (Family)">3 Persoane (Familie)</option>
-                    <option value="4" data-ro="4 Persoane (Familie)" data-en="4 Guests (Family)">4 Persoane (Familie)</option>
-                  </select>
-                </div>
-
-                <div class="form-group">
-                  <label for="rsvp-menu" class="form-label" data-ro="Preferințe Culinare / Meniu" data-en="Dietary / Menu Preference">Preferințe Culinare / Meniu</label>
-                  <select id="rsvp-menu" class="form-control">
-                    <option value="standard" data-ro="Meniu Standard Gourmet" data-en="Standard Gourmet Menu">Meniu Standard Gourmet</option>
-                    <option value="vegetarian" data-ro="Meniu Vegetarian" data-en="Vegetarian Menu">Meniu Vegetarian</option>
-                    <option value="vegan" data-ro="Meniu Vegan / De Post" data-en="Vegan Menu">Meniu Vegan / De Post</option>
-                    <option value="glutenfree" data-ro="Fără Gluten / Alergii speciale" data-en="Gluten-Free / Allergies">Fără Gluten / Alergii speciale</option>
-                  </select>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label class="form-label" data-ro="Transport către Pădurile Regale *" data-en="Transportation Option *">Transport către Pădurile Regale *</label>
-                <div class="radio-pills-group">
-                  <label class="radio-pill-label">
-                    <input type="radio" name="transport" value="blue_pipera" checked />
-                    <span class="radio-pill-box">
-                      <span>🚙</span>
-                      <span data-ro="Doresc transport cu „Blue” de la Metrou Pipera" data-en="I want 'Blue' transport from Pipera Metro">Doresc transport cu „Blue” de la Metrou Pipera</span>
-                    </span>
-                  </label>
-                  <label class="radio-pill-label">
-                    <input type="radio" name="transport" value="personal_car" />
-                    <span class="radio-pill-box">
-                      <span>🚗</span>
-                      <span data-ro="Vin cu mașina personală (Parcare asigurată)" data-en="Driving personal car (Free venue parking)">Vin cu mașina personală (Parcare asigurată)</span>
-                    </span>
-                  </label>
-                </div>
-              </div>
-
-              <div class="form-group">
-                <label for="rsvp-song" class="form-label" data-ro="Melodia care te scoate sigur la dans 🎶" data-en="Song that guarantees you on the dance floor 🎶">Melodia care te scoate sigur la dans 🎶</label>
-                <input type="text" id="rsvp-song" class="form-control" placeholder="Ex: ABBA - Dancing Queen / Subcarpați..." data-ro="Ex: ABBA - Dancing Queen / Subcarpați..." data-en="e.g. ABBA - Dancing Queen / Queen - Don't Stop Me Now" />
-              </div>
-
-              <div class="form-group">
-                <label for="rsvp-notes" class="form-label" data-ro="Alte mențiuni (opțional - ex: oră preferată Blue, scaun copil, alergii)" data-en="Additional Notes (optional - e.g. preferred Blue wave, high chair, allergies)">Alte mențiuni (opțional - ex: oră preferată Blue, scaun copil, alergii)</label>
-                <textarea id="rsvp-notes" rows="3" class="form-control" placeholder="Orice detaliu care ne ajută să vă oferim o seară perfectă..." data-ro="Orice detaliu care ne ajută să vă oferim o seară perfectă..." data-en="Any detail that helps us make your evening unforgettable..."></textarea>
-              </div>
-
-              <button type="submit" class="btn-primary-gold" style="width: 100%; justify-content: center; padding: 1.1rem;" id="submit-rsvp-btn">
+              <a href="https://docs.google.com/forms/d/e/1FAIpQLSfn04_gFx5xM52FuWdTb5ZjqrCkTLgOKo2F_K7w-z1dn6vRgA/viewform?usp=pp_url&amp;entry.1359414510=%F0%9F%A5%82+DA,+abia+a%C8%99tept+s%C4%83+fim+al%C4%83turi!" 
+                 target="_blank" 
+                 rel="noopener noreferrer" 
+                 class="btn-primary-gold" 
+                 style="display: inline-flex; width: 100%; justify-content: center; padding: 1.15rem; font-size: 1.02rem; text-decoration: none; box-shadow: 0 4px 15px rgba(212, 163, 89, 0.35);">
                 <span>⛷️</span>
-                <span data-ro="TRIMITE CONFIRMAREA &amp; EMITE SKI-PASS-UL" data-en="SUBMIT RSVP &amp; GENERATE ALPINE SKI-PASS">TRIMITE CONFIRMAREA &amp; EMITE SKI-PASS-UL</span>
-              </button>
+                <span data-ro="DESCHIDE FORMULARUL GOOGLE FORMS ↗" data-en="OPEN GOOGLE FORMS RSVP ↗">DESCHIDE FORMULARUL GOOGLE FORMS ↗</span>
+              </a>
+            </div>
 
-              <!-- Post-submission confirmation banner -->
-              <div id="rsvp-confirmation-banner" style="display: none; margin-top: 1.5rem; padding: 1.25rem; background: #0f2920; border: 1px solid var(--accent-gold); border-radius: var(--radius-md); color: #fff; text-align: center;">
-                <h4 style="font-family: var(--font-display); color: var(--accent-gold-light); font-size: 1.1rem; margin-bottom: 0.4rem;" data-ro="🎉 CONFIRMARE ÎNREGISTRATĂ CU SUCCES!" data-en="🎉 RSVP CONFIRMED SUCCESSFULLY!">
-                  🎉 CONFIRMARE ÎNREGISTRATĂ CU SUCCES!
-                </h4>
-                <p style="font-size: 0.88rem; color: var(--text-muted-light); margin-bottom: 1rem;" data-ro="Permisul tău Alpine Ski-Pass a fost emis în dreapta! Poți trimite detaliile direct pe WhatsApp către Ioana &amp; Andrei." data-en="Your Alpine Ski-Pass is ready! You can also send your confirmation directly via WhatsApp.">
-                  Permisul tău Alpine Ski-Pass a fost emis în dreapta! Poți trimite detaliile direct pe WhatsApp către Ioana &amp; Andrei.
-                </p>
-                <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
-                  <a href="#" id="btn-whatsapp-share" target="_blank" rel="noopener noreferrer" class="btn-pill-sm" style="background: #25D366; border-color: #25D366; color: #fff; text-decoration: none; padding: 0.55rem 1.1rem;">
-                    💬 <span data-ro="Trimite și pe WhatsApp" data-en="Send via WhatsApp">Trimite și pe WhatsApp</span>
-                  </a>
-                  <button type="button" id="btn-print-pass" class="btn-pill-sm">
-                    🖨️ <span data-ro="Printează / Salvează Pass" data-en="Print / Save Pass">Printează / Salvează Pass</span>
-                  </button>
-                </div>
-              </div>
-            </form>
+            <!-- Embedded Google Form iframe -->
+            <div style="border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border-dark); background: #ffffff; margin-bottom: 1.5rem;">
+              <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfn04_gFx5xM52FuWdTb5ZjqrCkTLgOKo2F_K7w-z1dn6vRgA/viewform?embedded=true&amp;entry.1359414510=%F0%9F%A5%82+DA,+abia+a%C8%99tept+s%C4%83+fim+al%C4%83turi!" width="100%" height="820" frameborder="0" marginheight="0" marginwidth="0" style="display: block; width: 100%; border: none;">Se încarcă formularul Google...</iframe>
+            </div>
 
             <!-- Direct Telephone Confirmation Strip (matching ioana-andrei.ro/confirmari) -->
             <div class="direct-contact-strip">
@@ -2947,6 +2863,23 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  // Google Form & Spreadsheet Integration Configuration
+  // To connect: Create a Google Form, get the pre-filled link, and paste the form URL and entry IDs here.
+  const GOOGLE_FORM_CONFIG = {
+    // Form action URL (e.g. 'https://docs.google.com/forms/d/e/1FAIpQLSc.../formResponse')
+    formUrl: '',
+    entries: {
+      name: '',       // entry.XXXXXXXXX (Nume și Prenume)
+      phone: '',      // entry.XXXXXXXXX (Telefon)
+      attendance: '', // entry.XXXXXXXXX (Prezență: DA / NU)
+      guests: '',     // entry.XXXXXXXXX (Număr Persoane)
+      menu: '',       // entry.XXXXXXXXX (Preferințe Meniu)
+      transport: '',  // entry.XXXXXXXXX (Transport)
+      song: '',       // entry.XXXXXXXXX (Melodie Dans)
+      notes: ''       // entry.XXXXXXXXX (Alte Mențiuni)
+    }
+  };
+
   // 6. Interactive Alpine Ski-Pass RSVP Live Binding
   const rsvpForm = document.getElementById('rsvp-form');
   const inputName = document.getElementById('rsvp-name');
@@ -2955,6 +2888,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const inputMenu = document.getElementById('rsvp-menu');
   const inputSong = document.getElementById('rsvp-song');
   const inputNotes = document.getElementById('rsvp-notes');
+  const submitRsvpBtn = document.getElementById('submit-rsvp-btn');
 
   const passHolder = document.getElementById('pass-holder-val');
   const passStatus = document.getElementById('pass-status-val');
@@ -3012,6 +2946,29 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
+  function submitToGoogleForms(data) {
+    if (!GOOGLE_FORM_CONFIG.formUrl) {
+      return Promise.resolve();
+    }
+    const formData = new FormData();
+    const entries = GOOGLE_FORM_CONFIG.entries;
+
+    if (entries.name && data.name) formData.append(entries.name, data.name);
+    if (entries.phone && data.phone) formData.append(entries.phone, data.phone);
+    if (entries.attendance && data.attendance) formData.append(entries.attendance, data.attendance);
+    if (entries.guests && data.guests) formData.append(entries.guests, data.guests);
+    if (entries.menu && data.menu) formData.append(entries.menu, data.menu);
+    if (entries.transport && data.transport) formData.append(entries.transport, data.transport);
+    if (entries.song && data.song) formData.append(entries.song, data.song);
+    if (entries.notes && data.notes) formData.append(entries.notes, data.notes);
+
+    return fetch(GOOGLE_FORM_CONFIG.formUrl, {
+      method: 'POST',
+      mode: 'no-cors',
+      body: formData
+    });
+  }
+
   // Listen to form changes
   if (rsvpForm) {
     rsvpForm.addEventListener('input', syncSkiPassPreview);
@@ -3021,41 +2978,80 @@ document.addEventListener('DOMContentLoaded', () => {
       e.preventDefault();
       syncSkiPassPreview();
 
-      // Generate unique serial number
-      const randomNum = Math.floor(1000 + Math.random() * 9000);
-      if (passSerial) passSerial.textContent = `IA-2027-0508-${randomNum}`;
-
-      const confirmationBox = document.getElementById('rsvp-confirmation-banner');
-      if (confirmationBox) {
-        confirmationBox.style.display = 'block';
-        confirmationBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      const originalBtnHtml = submitRsvpBtn ? submitRsvpBtn.innerHTML : '';
+      if (submitRsvpBtn) {
+        submitRsvpBtn.disabled = true;
+        submitRsvpBtn.innerHTML = `<span>⏳</span><span>${currentLang === 'ro' ? 'Se trimite confirmarea...' : 'Submitting RSVP...'}</span>`;
       }
 
-      // Prepare WhatsApp message link for instant sharing if desired
+      // Collect human-readable response data
       const nameVal = inputName.value.trim() || 'Invitat';
-      const attendVal = getRadioVal('attendance') === 'yes' ? 'DA, confirm prezența!' : 'Din păcate nu pot ajunge.';
-      const transportVal = getRadioVal('transport') === 'blue_pipera' ? 'Transport cu Blue de la Metrou Pipera' : 'Vin cu mașina personală';
+      const phoneVal = inputPhone ? inputPhone.value.trim() : '';
+      const isAttending = getRadioVal('attendance') === 'yes';
+      const attendVal = isAttending ? 'DA' : 'NU';
       const guestsVal = inputGuests.value;
-      const menuVal = inputMenu.value;
+      const menuMap = {
+        standard: 'Meniu Standard Gourmet',
+        vegetarian: 'Meniu Vegetarian',
+        vegan: 'Meniu Vegan / De Post',
+        glutenfree: 'Fără Gluten / Alergii speciale'
+      };
+      const menuVal = menuMap[inputMenu.value] || inputMenu.value;
+      const transportVal = getRadioVal('transport') === 'blue_pipera'
+        ? 'Shuttle Blue (Metrou Pipera)'
+        : 'Mașină personală (Parcare Pădurile Regale)';
       const songVal = inputSong.value.trim();
       const notesVal = inputNotes.value.trim();
 
-      const waText = encodeURIComponent(
-        `Salut Ioana & Andrei! 🏔️⛷️\n` +
-        `Confirmare nuntă 8 Mai 2027 (Pădurile Regale):\n` +
-        `• Nume: ${nameVal}\n` +
-        `• Răspuns: ${attendVal}\n` +
-        `• Persoane: ${guestsVal}\n` +
-        `• Transport: ${transportVal}\n` +
-        `• Meniu: ${menuVal}\n` +
-        (songVal ? `• Piesa de dans: ${songVal}\n` : '') +
-        (notesVal ? `• Mențiuni: ${notesVal}` : '')
-      );
+      submitToGoogleForms({
+        name: nameVal,
+        phone: phoneVal,
+        attendance: attendVal,
+        guests: guestsVal,
+        menu: menuVal,
+        transport: transportVal,
+        song: songVal,
+        notes: notesVal
+      })
+      .catch((err) => {
+        console.warn('Google Form submission notice:', err);
+      })
+      .finally(() => {
+        if (submitRsvpBtn) {
+          submitRsvpBtn.disabled = false;
+          submitRsvpBtn.innerHTML = originalBtnHtml;
+        }
 
-      const waBtn = document.getElementById('btn-whatsapp-share');
-      if (waBtn) {
-        waBtn.href = `https://wa.me/?text=${waText}`;
-      }
+        // Generate unique serial number
+        const randomNum = Math.floor(1000 + Math.random() * 9000);
+        if (passSerial) passSerial.textContent = `IA-2027-0508-${randomNum}`;
+
+        const confirmationBox = document.getElementById('rsvp-confirmation-banner');
+        if (confirmationBox) {
+          confirmationBox.style.display = 'block';
+          confirmationBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }
+
+        // Prepare WhatsApp message link for instant sharing if desired
+        const waAttendText = isAttending ? 'DA, confirm prezența!' : 'Din păcate nu pot ajunge.';
+        const waText = encodeURIComponent(
+          `Salut Ioana & Andrei! 🏔️⛷️\n` +
+          `Confirmare nuntă 8 Mai 2027 (Pădurile Regale):\n` +
+          `• Nume: ${nameVal}\n` +
+          `• Telefon: ${phoneVal}\n` +
+          `• Răspuns: ${waAttendText}\n` +
+          `• Persoane: ${guestsVal}\n` +
+          `• Transport: ${transportVal}\n` +
+          `• Meniu: ${menuVal}\n` +
+          (songVal ? `• Piesa de dans: ${songVal}\n` : '') +
+          (notesVal ? `• Mențiuni: ${notesVal}` : '')
+        );
+
+        const waBtn = document.getElementById('btn-whatsapp-share');
+        if (waBtn) {
+          waBtn.href = `https://wa.me/?text=${waText}`;
+        }
+      });
     });
   }
 
