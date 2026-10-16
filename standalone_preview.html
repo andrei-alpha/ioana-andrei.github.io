@@ -353,11 +353,11 @@ body {
 /* Mobile Menu Toggle Button (Hamburger / Close) */
 .mobile-menu-toggle {
   display: none;
-  background: rgba(255, 255, 255, 0.12);
-  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: rgba(212, 175, 55, 0.22);
+  border: 1.5px solid var(--accent-gold);
   color: #ffffff;
-  width: 38px;
-  height: 38px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   cursor: pointer;
   align-items: center;
@@ -367,32 +367,33 @@ body {
   padding: 0;
   transition: all 0.25s ease;
   flex-shrink: 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
 .mobile-menu-toggle:hover,
 .mobile-menu-toggle:focus-visible {
-  background: rgba(212, 175, 55, 0.25);
-  border-color: var(--accent-gold);
+  background: rgba(212, 175, 55, 0.35);
+  border-color: var(--accent-gold-light);
   outline: none;
 }
 
 .mobile-menu-toggle .hamburger-bar {
-  width: 17px;
+  width: 18px;
   height: 2px;
-  background-color: #ffffff;
+  background-color: var(--accent-gold-light);
   border-radius: 2px;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   transform-origin: center;
 }
 
 .mobile-menu-toggle.is-active {
-  background: rgba(212, 175, 55, 0.25);
-  border-color: var(--accent-gold);
+  background: rgba(212, 175, 55, 0.35);
+  border-color: var(--accent-gold-light);
 }
 
 .mobile-menu-toggle.is-active .hamburger-bar:nth-child(1) {
   transform: translateY(6.5px) rotate(45deg);
-  background-color: var(--accent-gold-light);
+  background-color: #ffffff;
 }
 
 .mobile-menu-toggle.is-active .hamburger-bar:nth-child(2) {
@@ -402,7 +403,7 @@ body {
 
 .mobile-menu-toggle.is-active .hamburger-bar:nth-child(3) {
   transform: translateY(-6.5px) rotate(-45deg);
-  background-color: var(--accent-gold-light);
+  background-color: #ffffff;
 }
 
 /* Mobile Navigation Overlay Drawer */
@@ -535,6 +536,29 @@ body.mobile-nav-open .site-header {
   padding: 0.9rem 1.5rem;
   font-size: 0.88rem;
   letter-spacing: 1.5px;
+}
+
+.mobile-nav-quick-toggles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+}
+
+.mobile-quick-pill {
+  flex: 1;
+  justify-content: center;
+  padding: 0.55rem 0.75rem;
+  font-size: 0.75rem;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.mobile-quick-pill:hover,
+.mobile-quick-pill:active {
+  background: rgba(212, 175, 55, 0.2);
+  border-color: var(--accent-gold);
+  color: #fff;
 }
 
 .mobile-nav-meta {
@@ -2174,6 +2198,61 @@ body.mobile-nav-open .site-header {
     scroll-padding-top: 75px;
   }
 
+  .site-header {
+    padding: 0.75rem 0;
+  }
+
+  .nav-container {
+    padding: 0 1rem;
+    gap: 0.5rem;
+    flex-wrap: nowrap;
+  }
+
+  .brand-logo {
+    gap: 0.45rem;
+    flex-shrink: 1;
+    min-width: 0;
+  }
+
+  .brand-crest-mini {
+    width: 32px;
+    height: 32px;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+  }
+
+  .brand-names {
+    font-size: 0.92rem;
+    letter-spacing: 1.2px;
+    white-space: nowrap;
+  }
+
+  .nav-actions {
+    gap: 0.4rem;
+    flex-shrink: 0;
+  }
+
+  #snow-toggle-btn {
+    display: none !important;
+  }
+
+  .btn-rsvp-nav {
+    display: none !important;
+  }
+
+  .music-toggle-btn {
+    padding: 0.35rem 0.55rem;
+  }
+
+  #lang-toggle-btn {
+    padding: 0.35rem 0.55rem;
+    font-size: 0.72rem;
+  }
+
+  .mobile-menu-toggle {
+    display: inline-flex !important;
+  }
+
   .story-grid,
   .schedule-cards-grid,
   .venue-transport-grid,
@@ -2188,44 +2267,18 @@ body.mobile-nav-open .site-header {
   .nav-links {
     display: none;
   }
-
-  .mobile-menu-toggle {
-    display: inline-flex;
-  }
-
-  .btn-rsvp-nav {
-    display: none;
-  }
 }
 
 @media (max-width: 640px) {
-  .site-header {
-    padding: 0.75rem 0;
-  }
   .nav-container {
-    padding: 0 1rem;
-    gap: 0.5rem;
+    padding: 0 0.85rem;
   }
-  .brand-crest-mini {
-    width: 34px;
-    height: 34px;
-    font-size: 0.82rem;
-  }
+
   .brand-names {
-    font-size: 1rem;
-    letter-spacing: 1.8px;
+    font-size: 0.88rem;
+    letter-spacing: 1px;
   }
-  .nav-actions {
-    gap: 0.45rem;
-  }
-  .btn-pill-sm {
-    padding: 0.35rem 0.6rem;
-    font-size: 0.72rem;
-  }
-  .mobile-menu-toggle {
-    width: 36px;
-    height: 36px;
-  }
+
   .countdown-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -2284,11 +2337,27 @@ body.mobile-nav-open .site-header {
     padding: 0 0.65rem;
   }
   .brand-names {
-    font-size: 0.88rem;
-    letter-spacing: 1.2px;
+    font-size: 0.86rem;
+    letter-spacing: 1px;
   }
-  #snow-toggle-btn {
-    display: none;
+}
+
+@media (max-width: 360px) {
+  .nav-container {
+    padding: 0 0.5rem;
+    gap: 0.35rem;
+  }
+  .brand-names {
+    font-size: 0.82rem;
+    letter-spacing: 0.8px;
+  }
+  .brand-crest-mini {
+    width: 28px;
+    height: 28px;
+    font-size: 0.72rem;
+  }
+  .nav-actions {
+    gap: 0.25rem;
   }
 }
 
@@ -2411,6 +2480,14 @@ body.mobile-nav-open .site-header {
           <span>⛷️</span>
           <span data-ro="Confirmă Prezența (RSVP)" data-en="Confirm Attendance (RSVP)">Confirm Attendance (RSVP)</span>
         </a>
+        <div class="mobile-nav-quick-toggles">
+          <button type="button" id="mobile-snow-toggle" class="btn-pill-sm mobile-quick-pill" title="Comută ninsoarea">
+            ❄️ <span data-ro="Ninsoare Alpină" data-en="Snow Effect">Snow Effect</span>
+          </button>
+          <button type="button" id="mobile-music-toggle" class="btn-pill-sm mobile-quick-pill" title="Muzică de fundal">
+            🎵 <span data-ro="Muzică Nuntă" data-en="Wedding Music">Wedding Music</span>
+          </button>
+        </div>
         <div class="mobile-nav-meta">
           <span data-ro="📅 8 Mai 2027" data-en="📅 May 8, 2027">📅 May 8, 2027</span>
           <span>•</span>
@@ -3286,6 +3363,24 @@ document.addEventListener('DOMContentLoaded', () => {
       toggleMobileMenu(true);
     }
   });
+
+  // Mobile drawer quick toggles for snow & music
+  const mobileSnowToggle = document.getElementById('mobile-snow-toggle');
+  const mobileMusicToggle = document.getElementById('mobile-music-toggle');
+
+  if (mobileSnowToggle) {
+    mobileSnowToggle.addEventListener('click', () => {
+      const snowBtn = document.getElementById('snow-toggle-btn');
+      if (snowBtn) snowBtn.click();
+    });
+  }
+
+  if (mobileMusicToggle) {
+    mobileMusicToggle.addEventListener('click', () => {
+      const musicBtn = document.getElementById('music-toggle-btn');
+      if (musicBtn) musicBtn.click();
+    });
+  }
 
   // 2. Live Countdown Timer to 8 May 2027, 18:00 EEST (UTC+3)
   const targetDate = new Date('2027-05-08T18:00:00+03:00').getTime();

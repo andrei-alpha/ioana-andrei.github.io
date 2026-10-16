@@ -73,6 +73,24 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Mobile drawer quick toggles for snow & music
+  const mobileSnowToggle = document.getElementById('mobile-snow-toggle');
+  const mobileMusicToggle = document.getElementById('mobile-music-toggle');
+
+  if (mobileSnowToggle) {
+    mobileSnowToggle.addEventListener('click', () => {
+      const snowBtn = document.getElementById('snow-toggle-btn');
+      if (snowBtn) snowBtn.click();
+    });
+  }
+
+  if (mobileMusicToggle) {
+    mobileMusicToggle.addEventListener('click', () => {
+      const musicBtn = document.getElementById('music-toggle-btn');
+      if (musicBtn) musicBtn.click();
+    });
+  }
+
   // 2. Live Countdown Timer to 8 May 2027, 18:00 EEST (UTC+3)
   const targetDate = new Date('2027-05-08T18:00:00+03:00').getTime();
   const elDays = document.getElementById('cd-days');
