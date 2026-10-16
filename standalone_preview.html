@@ -45,6 +45,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 85px;
   font-size: 16px;
 }
 
@@ -95,7 +96,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 1010;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   padding: 1.1rem 0;
   background: linear-gradient(180deg, rgba(11, 23, 19, 0.9) 0%, rgba(11, 23, 19, 0) 100%);
@@ -347,6 +348,205 @@ body {
   background: var(--accent-gold-light);
   transform: translateY(-1px);
   box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35);
+}
+
+/* Mobile Menu Toggle Button (Hamburger / Close) */
+.mobile-menu-toggle {
+  display: none;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  color: #ffffff;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4.5px;
+  padding: 0;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.mobile-menu-toggle:hover,
+.mobile-menu-toggle:focus-visible {
+  background: rgba(212, 175, 55, 0.25);
+  border-color: var(--accent-gold);
+  outline: none;
+}
+
+.mobile-menu-toggle .hamburger-bar {
+  width: 17px;
+  height: 2px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+}
+
+.mobile-menu-toggle.is-active {
+  background: rgba(212, 175, 55, 0.25);
+  border-color: var(--accent-gold);
+}
+
+.mobile-menu-toggle.is-active .hamburger-bar:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+  background-color: var(--accent-gold-light);
+}
+
+.mobile-menu-toggle.is-active .hamburger-bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.mobile-menu-toggle.is-active .hamburger-bar:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+  background-color: var(--accent-gold-light);
+}
+
+/* Mobile Navigation Overlay Drawer */
+.mobile-nav-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  background: rgba(9, 19, 15, 0.98);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  z-index: 1005;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-12px);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s ease;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  padding-top: calc(75px + env(safe-area-inset-top, 0px));
+  padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+}
+
+.mobile-nav-drawer.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+body.mobile-nav-open {
+  overflow: hidden;
+  touch-action: none;
+}
+
+body.mobile-nav-open .site-header {
+  background: rgba(9, 19, 15, 0.98);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.mobile-nav-inner {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.mobile-nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.94);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:active {
+  background: rgba(212, 175, 55, 0.14);
+  border-color: rgba(212, 175, 55, 0.35);
+  color: var(--accent-gold-light);
+  transform: translateX(4px);
+}
+
+.mobile-nav-icon {
+  font-size: 1.15rem;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.mobile-nav-text {
+  flex-grow: 1;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+
+.mobile-nav-chevron {
+  color: var(--accent-gold);
+  font-size: 1.35rem;
+  line-height: 1;
+  font-weight: 300;
+  transition: transform 0.2s ease;
+}
+
+.mobile-nav-link:hover .mobile-nav-chevron,
+.mobile-nav-link:active .mobile-nav-chevron {
+  transform: translateX(3px);
+}
+
+.mobile-nav-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mobile-nav-rsvp-btn {
+  width: 100%;
+  justify-content: center;
+  padding: 0.9rem 1.5rem;
+  font-size: 0.88rem;
+  letter-spacing: 1.5px;
+}
+
+.mobile-nav-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  font-size: 0.75rem;
+  color: var(--accent-gold-light);
+  opacity: 0.85;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 /* HERO SECTION WITH REAL PHOTOS BACKGROUND SLIDESHOW */
@@ -1970,6 +2170,10 @@ body {
 }
 
 @media (max-width: 991px) {
+  html {
+    scroll-padding-top: 75px;
+  }
+
   .story-grid,
   .schedule-cards-grid,
   .venue-transport-grid,
@@ -1984,9 +2188,44 @@ body {
   .nav-links {
     display: none;
   }
+
+  .mobile-menu-toggle {
+    display: inline-flex;
+  }
+
+  .btn-rsvp-nav {
+    display: none;
+  }
 }
 
 @media (max-width: 640px) {
+  .site-header {
+    padding: 0.75rem 0;
+  }
+  .nav-container {
+    padding: 0 1rem;
+    gap: 0.5rem;
+  }
+  .brand-crest-mini {
+    width: 34px;
+    height: 34px;
+    font-size: 0.82rem;
+  }
+  .brand-names {
+    font-size: 1rem;
+    letter-spacing: 1.8px;
+  }
+  .nav-actions {
+    gap: 0.45rem;
+  }
+  .btn-pill-sm {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.72rem;
+  }
+  .mobile-menu-toggle {
+    width: 36px;
+    height: 36px;
+  }
   .countdown-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -2040,14 +2279,29 @@ body {
   }
 }
 
+@media (max-width: 400px) {
+  .nav-container {
+    padding: 0 0.65rem;
+  }
+  .brand-names {
+    font-size: 0.88rem;
+    letter-spacing: 1.2px;
+  }
+  #snow-toggle-btn {
+    display: none;
+  }
+}
+
   </style>
 </head>
 <body>
   <!-- Subtle Snowfall Overlay -->
   <canvas id="snow-canvas" aria-hidden="true"></canvas>
 
-  <!-- Hidden Background Music Player (YouTube IFrame API: Alex Warren - Ordinary) -->
-  <div id="youtube-audio-player" style="position:fixed; width:1px; height:1px; left:-9999px; top:-9999px; opacity:0; pointer-events:none;" aria-hidden="true"></div>
+  <!-- Background Atmosphere Music Player (HTML5 Audio: Alex Warren - Ordinary) -->
+  <audio id="bg-audio" preload="auto" loop playsinline>
+    <source src="assets/audio/ordinary.mp3" type="audio/mpeg" />
+  </audio>
 
   <!-- Navigation Header -->
   <header id="site-header" class="site-header">
@@ -2089,9 +2343,82 @@ body {
           🌐 <span id="lang-ro" style="opacity:0.55">RO</span> / <span id="lang-en" style="font-weight:700">EN</span>
         </button>
         <a href="#confirmari" class="btn-rsvp-nav" id="header-rsvp-btn" data-ro="Confirmă (RSVP)" data-en="RSVP Now">RSVP Now</a>
+        <button type="button" id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="mobile-nav-drawer">
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+          <span class="hamburger-bar"></span>
+        </button>
       </div>
     </div>
   </header>
+
+  <!-- Mobile Navigation Overlay Drawer -->
+  <div id="mobile-nav-drawer" class="mobile-nav-drawer" aria-hidden="true">
+    <div class="mobile-nav-inner">
+      <ul class="mobile-nav-links">
+        <li>
+          <a href="#acasa" class="mobile-nav-link">
+            <span class="mobile-nav-icon">🏔️</span>
+            <span class="mobile-nav-text" data-ro="Acasă" data-en="Home">Home</span>
+            <span class="mobile-nav-chevron">›</span>
+          </a>
+        </li>
+        <li>
+          <a href="#poveste" class="mobile-nav-link">
+            <span class="mobile-nav-icon">⛷️</span>
+            <span class="mobile-nav-text" data-ro="Povestea" data-en="Our Story">Our Story</span>
+            <span class="mobile-nav-chevron">›</span>
+          </a>
+        </li>
+        <li>
+          <a href="#program" class="mobile-nav-link">
+            <span class="mobile-nav-icon">⏱️</span>
+            <span class="mobile-nav-text" data-ro="Program" data-en="Schedule">Schedule</span>
+            <span class="mobile-nav-chevron">›</span>
+          </a>
+        </li>
+        <li>
+          <a href="#locatie-transport" class="mobile-nav-link">
+            <span class="mobile-nav-icon">🌲</span>
+            <span class="mobile-nav-text" data-ro="Locație &amp; Transport" data-en="Venue &amp; Travel">Venue &amp; Travel</span>
+            <span class="mobile-nav-chevron">›</span>
+          </a>
+        </li>
+        <li>
+          <a href="#galerie-foto" class="mobile-nav-link">
+            <span class="mobile-nav-icon">📸</span>
+            <span class="mobile-nav-text" data-ro="Galerie" data-en="Gallery">Gallery</span>
+            <span class="mobile-nav-chevron">›</span>
+          </a>
+        </li>
+        <li>
+          <a href="#galerie" class="mobile-nav-link">
+            <span class="mobile-nav-icon">☁️</span>
+            <span class="mobile-nav-text" data-ro="Upload Poze" data-en="Photo Upload">Photo Upload</span>
+            <span class="mobile-nav-chevron">›</span>
+          </a>
+        </li>
+        <li>
+          <a href="#faq" class="mobile-nav-link">
+            <span class="mobile-nav-icon">❓</span>
+            <span class="mobile-nav-text" data-ro="FAQ" data-en="FAQ">FAQ</span>
+            <span class="mobile-nav-chevron">›</span>
+          </a>
+        </li>
+      </ul>
+      <div class="mobile-nav-footer">
+        <a href="#confirmari" class="btn-primary-gold mobile-nav-rsvp-btn" id="mobile-rsvp-btn">
+          <span>⛷️</span>
+          <span data-ro="Confirmă Prezența (RSVP)" data-en="Confirm Attendance (RSVP)">Confirm Attendance (RSVP)</span>
+        </a>
+        <div class="mobile-nav-meta">
+          <span data-ro="📅 8 Mai 2027" data-en="📅 May 8, 2027">📅 May 8, 2027</span>
+          <span>•</span>
+          <span data-ro="🌲 Pădurile Regale" data-en="🌲 Pădurile Regale">🌲 Pădurile Regale</span>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <main>
     <!-- HERO SECTION WITH INTERACTIVE REAL-PHOTO SLIDESHOW BACKGROUND -->
@@ -2609,7 +2936,7 @@ body {
                 </div>
                 <div class="pass-field-row">
                   <span class="pass-field-label" data-ro="STATUS PREZENȚĂ" data-en="ATTENDANCE STATUS">ATTENDANCE STATUS</span>
-                  <span class="pass-field-val" id="pass-status-val" style="color: #6be695;">CONFIRMED • ON THE SLOPES</span>
+                  <span class="pass-field-val" id="pass-status-val" style="color: #6be695;" data-ro="CONFIRMAT • PE PÂRTIE" data-en="CONFIRMED • ON THE SLOPES">CONFIRMAT • PE PÂRTIE</span>
                 </div>
                 <div class="pass-field-row">
                   <span class="pass-field-label" data-ro="NUMĂR PERSOANE" data-en="PARTY SIZE">PARTY SIZE</span>
@@ -2884,7 +3211,6 @@ body {
     </div>
   </footer>
 
-  <script src="https://www.youtube.com/iframe_api"></script>
   <script>
 // Ioana & Andrei Wedding Website Interactive Logic (8 May 2027 - Padurile Regale)
 
@@ -2896,6 +3222,68 @@ document.addEventListener('DOMContentLoaded', () => {
       header.classList.add('scrolled');
     } else {
       header.classList.remove('scrolled');
+    }
+  });
+
+  // Mobile Navigation Drawer Toggle & Interactions
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  const mobileNavDrawer = document.getElementById('mobile-nav-drawer');
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-nav-rsvp-btn');
+
+  function toggleMobileMenu(forceClose = false) {
+    if (!mobileMenuToggle || !mobileNavDrawer) return;
+    const isCurrentlyOpen = mobileNavDrawer.classList.contains('is-open');
+    const shouldOpen = forceClose ? false : !isCurrentlyOpen;
+
+    if (shouldOpen) {
+      mobileNavDrawer.classList.add('is-open');
+      mobileNavDrawer.setAttribute('aria-hidden', 'false');
+      mobileMenuToggle.classList.add('is-active');
+      mobileMenuToggle.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('mobile-nav-open');
+    } else {
+      mobileNavDrawer.classList.remove('is-open');
+      mobileNavDrawer.setAttribute('aria-hidden', 'true');
+      mobileMenuToggle.classList.remove('is-active');
+      mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('mobile-nav-open');
+    }
+  }
+
+  if (mobileMenuToggle) {
+    mobileMenuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMobileMenu();
+    });
+  }
+
+  // Close when clicking any nav link in the mobile drawer
+  mobileNavLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      toggleMobileMenu(true);
+    });
+  });
+
+  // Close when clicking backdrop
+  if (mobileNavDrawer) {
+    mobileNavDrawer.addEventListener('click', (e) => {
+      if (e.target === mobileNavDrawer) {
+        toggleMobileMenu(true);
+      }
+    });
+  }
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileNavDrawer && mobileNavDrawer.classList.contains('is-open')) {
+      toggleMobileMenu(true);
+    }
+  });
+
+  // Close when resizing above mobile breakpoint
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 991 && mobileNavDrawer && mobileNavDrawer.classList.contains('is-open')) {
+      toggleMobileMenu(true);
     }
   });
 
@@ -2993,6 +3381,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     } catch (e) {
       // Deferred until story carousel elements are initialized
+    }
+    // Update music toggle button tooltip for current language
+    try {
+      if (typeof updateMusicBtnUI === 'function') {
+        updateMusicBtnUI(isMusicPlaying);
+      }
+    } catch (e) {
+      // Deferred
     }
   }
 
@@ -3129,7 +3525,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function syncSkiPassPreview() {
     const nameVal = inputName && inputName.value.trim() ? inputName.value.trim() : (currentLang === 'ro' ? 'Invitatul Nostru Drag' : 'Our Honored Guest');
-    const attendVal = getRadioVal('attendance') || 'yes';
     const transportVal = getRadioVal('transport') || 'blue_pipera';
     const guestsVal = inputGuests ? inputGuests.value : '2';
     const menuVal = inputMenu ? inputMenu.value : 'standard';
@@ -3147,13 +3542,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (passStatus) {
-      if (attendVal === 'yes') {
-        passStatus.textContent = currentLang === 'ro' ? 'CONFIRMAT • PE PÂRTIE' : 'CONFIRMED • ON THE SLOPES';
-        passStatus.style.color = '#6be695';
-      } else {
-        passStatus.textContent = currentLang === 'ro' ? 'ABSENT • CU GÂNDUL ALĂTURI' : 'UNABLE TO ATTEND';
-        passStatus.style.color = '#f59e0b';
-      }
+      passStatus.textContent = currentLang === 'ro' ? 'CONFIRMAT • PE PÂRTIE' : 'CONFIRMED • ON THE SLOPES';
+      passStatus.style.color = '#6be695';
     }
 
     if (passGuests) {
@@ -3330,7 +3720,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'DTSTART:20270508T150000Z',
         'DTEND:20270509T020000Z',
         'SUMMARY:Nunta Ioana & Andrei 🏔️ Pădurile Regale',
-        'DESCRIPTION:Ceremonia începe la ora 18:00 în pădurea de stejari seculari, iar Petrecerea la ora 19:00 la Pădurile Regale (Corbeanca), cu petrecerea începând de la ora 19:00. Transport asigurat cu Blue de la stația de metrou Pipera!',
+        'DESCRIPTION:Ceremonia începe la ora 18:00 în pădurea de stejari seculari, iar Petrecerea la ora 19:00 la Pădurile Regale (Corbeanca). Transport asigurat cu Blue de la stația de metrou Pipera!',
         'LOCATION:Pădurile Regale, Strada Pădurii, Corbeanca, Ilfov, România',
         'END:VEVENT',
         'END:VCALENDAR'
@@ -3529,12 +3919,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 14. Background Atmosphere Music Player (YouTube IFrame API: Alex Warren - Ordinary)
+  // 14. Background Atmosphere Music Player (HTML5 Audio: Alex Warren - Ordinary)
   const musicToggleBtn = document.getElementById('music-toggle-btn');
-  const YOUTUBE_VIDEO_ID = 'u2ah9tWTkmk';
-  let ytPlayer = null;
+  const bgAudio = document.getElementById('bg-audio');
   let isMusicPlaying = false;
   let userManuallyToggled = false;
+
+  if (bgAudio) {
+    bgAudio.volume = 0.35;
+  }
 
   function updateMusicBtnUI(playing) {
     isMusicPlaying = playing;
@@ -3555,71 +3948,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function initYouTubePlayer() {
-    if (typeof YT === 'undefined' || typeof YT.Player === 'undefined') return;
-    if (ytPlayer) return;
-
-    ytPlayer = new YT.Player('youtube-audio-player', {
-      height: '1',
-      width: '1',
-      videoId: YOUTUBE_VIDEO_ID,
-      playerVars: {
-        autoplay: 0,
-        controls: 0,
-        disablekb: 1,
-        fs: 0,
-        loop: 1,
-        playlist: YOUTUBE_VIDEO_ID,
-        modestbranding: 1,
-        playsinline: 1,
-        rel: 0
-      },
-      events: {
-        onReady: (e) => {
-          e.target.setVolume(35);
-        },
-        onStateChange: (e) => {
-          if (e.data === YT.PlayerState.PLAYING) {
-            updateMusicBtnUI(true);
-          } else if (e.data === YT.PlayerState.PAUSED || e.data === YT.PlayerState.ENDED) {
-            updateMusicBtnUI(false);
-          }
-        },
-        onError: (e) => {
-          console.warn('YouTube music player notice:', e);
-          updateMusicBtnUI(false);
-        }
-      }
-    });
+  async function playMusic() {
+    if (!bgAudio) return;
+    try {
+      await bgAudio.play();
+      updateMusicBtnUI(true);
+    } catch (err) {
+      console.warn('Audio playback notice:', err);
+      updateMusicBtnUI(false);
+    }
   }
 
-  // Hook into YouTube IFrame API Ready
-  if (window.YT && window.YT.Player) {
-    initYouTubePlayer();
-  } else {
-    const existingOnReady = window.onYouTubeIframeAPIReady;
-    window.onYouTubeIframeAPIReady = function() {
-      if (typeof existingOnReady === 'function') existingOnReady();
-      initYouTubePlayer();
-    };
+  function pauseMusic() {
+    if (!bgAudio) return;
+    bgAudio.pause();
+    updateMusicBtnUI(false);
   }
 
   // Soft autoplay on first user interaction anywhere on the page
   function startMusicOnFirstInteraction() {
     if (userManuallyToggled) return;
-    if (ytPlayer && typeof ytPlayer.playVideo === 'function') {
-      try {
-        ytPlayer.playVideo();
-      } catch (err) {
-        console.warn('Autoplay interaction notice:', err);
-      }
-    }
-    document.removeEventListener('click', startMusicOnFirstInteraction);
-    document.removeEventListener('touchstart', startMusicOnFirstInteraction);
+    playMusic();
   }
 
-  document.addEventListener('click', startMusicOnFirstInteraction, { once: true, passive: true });
-  document.addEventListener('touchstart', startMusicOnFirstInteraction, { once: true, passive: true });
+  ['click', 'touchstart', 'keydown'].forEach(evt => {
+    document.addEventListener(evt, startMusicOnFirstInteraction, { once: true, passive: true });
+  });
 
   // Music toggle button click handler
   if (musicToggleBtn) {
@@ -3627,20 +3981,19 @@ document.addEventListener('DOMContentLoaded', () => {
       e.stopPropagation();
       userManuallyToggled = true;
 
-      if (!ytPlayer || typeof ytPlayer.getPlayerState !== 'function') {
-        initYouTubePlayer();
-        return;
-      }
-
-      const state = ytPlayer.getPlayerState();
-      if (state === YT.PlayerState.PLAYING) {
-        ytPlayer.pauseVideo();
-        updateMusicBtnUI(false);
+      if (!bgAudio) return;
+      if (bgAudio.paused) {
+        playMusic();
       } else {
-        ytPlayer.playVideo();
-        updateMusicBtnUI(true);
+        pauseMusic();
       }
     });
+  }
+
+  if (bgAudio) {
+    bgAudio.addEventListener('play', () => updateMusicBtnUI(true));
+    bgAudio.addEventListener('pause', () => updateMusicBtnUI(false));
+    bgAudio.addEventListener('ended', () => updateMusicBtnUI(false));
   }
 
   // Initial sync once DOM elements are all declared

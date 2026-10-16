@@ -11,6 +11,68 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  // Mobile Navigation Drawer Toggle & Interactions
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  const mobileNavDrawer = document.getElementById('mobile-nav-drawer');
+  const mobileNavLinks = document.querySelectorAll('.mobile-nav-link, .mobile-nav-rsvp-btn');
+
+  function toggleMobileMenu(forceClose = false) {
+    if (!mobileMenuToggle || !mobileNavDrawer) return;
+    const isCurrentlyOpen = mobileNavDrawer.classList.contains('is-open');
+    const shouldOpen = forceClose ? false : !isCurrentlyOpen;
+
+    if (shouldOpen) {
+      mobileNavDrawer.classList.add('is-open');
+      mobileNavDrawer.setAttribute('aria-hidden', 'false');
+      mobileMenuToggle.classList.add('is-active');
+      mobileMenuToggle.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('mobile-nav-open');
+    } else {
+      mobileNavDrawer.classList.remove('is-open');
+      mobileNavDrawer.setAttribute('aria-hidden', 'true');
+      mobileMenuToggle.classList.remove('is-active');
+      mobileMenuToggle.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('mobile-nav-open');
+    }
+  }
+
+  if (mobileMenuToggle) {
+    mobileMenuToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      toggleMobileMenu();
+    });
+  }
+
+  // Close when clicking any nav link in the mobile drawer
+  mobileNavLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      toggleMobileMenu(true);
+    });
+  });
+
+  // Close when clicking backdrop
+  if (mobileNavDrawer) {
+    mobileNavDrawer.addEventListener('click', (e) => {
+      if (e.target === mobileNavDrawer) {
+        toggleMobileMenu(true);
+      }
+    });
+  }
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && mobileNavDrawer && mobileNavDrawer.classList.contains('is-open')) {
+      toggleMobileMenu(true);
+    }
+  });
+
+  // Close when resizing above mobile breakpoint
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 991 && mobileNavDrawer && mobileNavDrawer.classList.contains('is-open')) {
+      toggleMobileMenu(true);
+    }
+  });
+
   // 2. Live Countdown Timer to 8 May 2027, 18:00 EEST (UTC+3)
   const targetDate = new Date('2027-05-08T18:00:00+03:00').getTime();
   const elDays = document.getElementById('cd-days');
@@ -105,6 +167,14 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     } catch (e) {
       // Deferred until story carousel elements are initialized
+    }
+    // Update music toggle button tooltip for current language
+    try {
+      if (typeof updateMusicBtnUI === 'function') {
+        updateMusicBtnUI(isMusicPlaying);
+      }
+    } catch (e) {
+      // Deferred
     }
   }
 
@@ -241,7 +311,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function syncSkiPassPreview() {
     const nameVal = inputName && inputName.value.trim() ? inputName.value.trim() : (currentLang === 'ro' ? 'Invitatul Nostru Drag' : 'Our Honored Guest');
-    const attendVal = getRadioVal('attendance') || 'yes';
     const transportVal = getRadioVal('transport') || 'blue_pipera';
     const guestsVal = inputGuests ? inputGuests.value : '2';
     const menuVal = inputMenu ? inputMenu.value : 'standard';
@@ -259,13 +328,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     if (passStatus) {
-      if (attendVal === 'yes') {
-        passStatus.textContent = currentLang === 'ro' ? 'CONFIRMAT • PE PÂRTIE' : 'CONFIRMED • ON THE SLOPES';
-        passStatus.style.color = '#6be695';
-      } else {
-        passStatus.textContent = currentLang === 'ro' ? 'ABSENT • CU GÂNDUL ALĂTURI' : 'UNABLE TO ATTEND';
-        passStatus.style.color = '#f59e0b';
-      }
+      passStatus.textContent = currentLang === 'ro' ? 'CONFIRMAT • PE PÂRTIE' : 'CONFIRMED • ON THE SLOPES';
+      passStatus.style.color = '#6be695';
     }
 
     if (passGuests) {
@@ -631,12 +695,15 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // 14. Background Atmosphere Music Player (YouTube IFrame API: Alex Warren - Ordinary)
+  // 14. Background Atmosphere Music Player (HTML5 Audio: Alex Warren - Ordinary)
   const musicToggleBtn = document.getElementById('music-toggle-btn');
-  const YOUTUBE_VIDEO_ID = 'u2ah9tWTkmk';
-  let ytPlayer = null;
+  const bgAudio = document.getElementById('bg-audio');
   let isMusicPlaying = false;
   let userManuallyToggled = false;
+
+  if (bgAudio) {
+    bgAudio.volume = 0.35;
+  }
 
   function updateMusicBtnUI(playing) {
     isMusicPlaying = playing;
@@ -657,71 +724,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  function initYouTubePlayer() {
-    if (typeof YT === 'undefined' || typeof YT.Player === 'undefined') return;
-    if (ytPlayer) return;
-
-    ytPlayer = new YT.Player('youtube-audio-player', {
-      height: '1',
-      width: '1',
-      videoId: YOUTUBE_VIDEO_ID,
-      playerVars: {
-        autoplay: 0,
-        controls: 0,
-        disablekb: 1,
-        fs: 0,
-        loop: 1,
-        playlist: YOUTUBE_VIDEO_ID,
-        modestbranding: 1,
-        playsinline: 1,
-        rel: 0
-      },
-      events: {
-        onReady: (e) => {
-          e.target.setVolume(35);
-        },
-        onStateChange: (e) => {
-          if (e.data === YT.PlayerState.PLAYING) {
-            updateMusicBtnUI(true);
-          } else if (e.data === YT.PlayerState.PAUSED || e.data === YT.PlayerState.ENDED) {
-            updateMusicBtnUI(false);
-          }
-        },
-        onError: (e) => {
-          console.warn('YouTube music player notice:', e);
-          updateMusicBtnUI(false);
-        }
-      }
-    });
+  async function playMusic() {
+    if (!bgAudio) return;
+    try {
+      await bgAudio.play();
+      updateMusicBtnUI(true);
+    } catch (err) {
+      console.warn('Audio playback notice:', err);
+      updateMusicBtnUI(false);
+    }
   }
 
-  // Hook into YouTube IFrame API Ready
-  if (window.YT && window.YT.Player) {
-    initYouTubePlayer();
-  } else {
-    const existingOnReady = window.onYouTubeIframeAPIReady;
-    window.onYouTubeIframeAPIReady = function() {
-      if (typeof existingOnReady === 'function') existingOnReady();
-      initYouTubePlayer();
-    };
+  function pauseMusic() {
+    if (!bgAudio) return;
+    bgAudio.pause();
+    updateMusicBtnUI(false);
   }
 
   // Soft autoplay on first user interaction anywhere on the page
   function startMusicOnFirstInteraction() {
     if (userManuallyToggled) return;
-    if (ytPlayer && typeof ytPlayer.playVideo === 'function') {
-      try {
-        ytPlayer.playVideo();
-      } catch (err) {
-        console.warn('Autoplay interaction notice:', err);
-      }
-    }
-    document.removeEventListener('click', startMusicOnFirstInteraction);
-    document.removeEventListener('touchstart', startMusicOnFirstInteraction);
+    playMusic();
   }
 
-  document.addEventListener('click', startMusicOnFirstInteraction, { once: true, passive: true });
-  document.addEventListener('touchstart', startMusicOnFirstInteraction, { once: true, passive: true });
+  ['click', 'touchstart', 'keydown'].forEach(evt => {
+    document.addEventListener(evt, startMusicOnFirstInteraction, { once: true, passive: true });
+  });
 
   // Music toggle button click handler
   if (musicToggleBtn) {
@@ -729,20 +757,19 @@ document.addEventListener('DOMContentLoaded', () => {
       e.stopPropagation();
       userManuallyToggled = true;
 
-      if (!ytPlayer || typeof ytPlayer.getPlayerState !== 'function') {
-        initYouTubePlayer();
-        return;
-      }
-
-      const state = ytPlayer.getPlayerState();
-      if (state === YT.PlayerState.PLAYING) {
-        ytPlayer.pauseVideo();
-        updateMusicBtnUI(false);
+      if (!bgAudio) return;
+      if (bgAudio.paused) {
+        playMusic();
       } else {
-        ytPlayer.playVideo();
-        updateMusicBtnUI(true);
+        pauseMusic();
       }
     });
+  }
+
+  if (bgAudio) {
+    bgAudio.addEventListener('play', () => updateMusicBtnUI(true));
+    bgAudio.addEventListener('pause', () => updateMusicBtnUI(false));
+    bgAudio.addEventListener('ended', () => updateMusicBtnUI(false));
   }
 
   // Initial sync once DOM elements are all declared

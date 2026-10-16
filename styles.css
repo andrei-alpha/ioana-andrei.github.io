@@ -35,6 +35,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 85px;
   font-size: 16px;
 }
 
@@ -85,7 +86,7 @@ body {
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 1000;
+  z-index: 1010;
   transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
   padding: 1.1rem 0;
   background: linear-gradient(180deg, rgba(11, 23, 19, 0.9) 0%, rgba(11, 23, 19, 0) 100%);
@@ -337,6 +338,205 @@ body {
   background: var(--accent-gold-light);
   transform: translateY(-1px);
   box-shadow: 0 4px 14px rgba(212, 175, 55, 0.35);
+}
+
+/* Mobile Menu Toggle Button (Hamburger / Close) */
+.mobile-menu-toggle {
+  display: none;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  color: #ffffff;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 4.5px;
+  padding: 0;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.mobile-menu-toggle:hover,
+.mobile-menu-toggle:focus-visible {
+  background: rgba(212, 175, 55, 0.25);
+  border-color: var(--accent-gold);
+  outline: none;
+}
+
+.mobile-menu-toggle .hamburger-bar {
+  width: 17px;
+  height: 2px;
+  background-color: #ffffff;
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transform-origin: center;
+}
+
+.mobile-menu-toggle.is-active {
+  background: rgba(212, 175, 55, 0.25);
+  border-color: var(--accent-gold);
+}
+
+.mobile-menu-toggle.is-active .hamburger-bar:nth-child(1) {
+  transform: translateY(6.5px) rotate(45deg);
+  background-color: var(--accent-gold-light);
+}
+
+.mobile-menu-toggle.is-active .hamburger-bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+
+.mobile-menu-toggle.is-active .hamburger-bar:nth-child(3) {
+  transform: translateY(-6.5px) rotate(-45deg);
+  background-color: var(--accent-gold-light);
+}
+
+/* Mobile Navigation Overlay Drawer */
+.mobile-nav-drawer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  background: rgba(9, 19, 15, 0.98);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  z-index: 1005;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-12px);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), visibility 0.3s ease;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  display: flex;
+  flex-direction: column;
+  padding-top: calc(75px + env(safe-area-inset-top, 0px));
+  padding-bottom: calc(2rem + env(safe-area-inset-bottom, 0px));
+}
+
+.mobile-nav-drawer.is-open {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+body.mobile-nav-open {
+  overflow: hidden;
+  touch-action: none;
+}
+
+body.mobile-nav-open .site-header {
+  background: rgba(9, 19, 15, 0.98);
+  border-bottom: 1px solid rgba(212, 175, 55, 0.25);
+}
+
+.mobile-nav-inner {
+  width: 100%;
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1rem 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.mobile-nav-links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.mobile-nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.85rem 1rem;
+  border-radius: 12px;
+  text-decoration: none;
+  color: rgba(255, 255, 255, 0.94);
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.07);
+  transition: all 0.2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:active {
+  background: rgba(212, 175, 55, 0.14);
+  border-color: rgba(212, 175, 55, 0.35);
+  color: var(--accent-gold-light);
+  transform: translateX(4px);
+}
+
+.mobile-nav-icon {
+  font-size: 1.15rem;
+  width: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.mobile-nav-text {
+  flex-grow: 1;
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 600;
+  letter-spacing: 1.6px;
+  text-transform: uppercase;
+}
+
+.mobile-nav-chevron {
+  color: var(--accent-gold);
+  font-size: 1.35rem;
+  line-height: 1;
+  font-weight: 300;
+  transition: transform 0.2s ease;
+}
+
+.mobile-nav-link:hover .mobile-nav-chevron,
+.mobile-nav-link:active .mobile-nav-chevron {
+  transform: translateX(3px);
+}
+
+.mobile-nav-footer {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding-top: 0.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.mobile-nav-rsvp-btn {
+  width: 100%;
+  justify-content: center;
+  padding: 0.9rem 1.5rem;
+  font-size: 0.88rem;
+  letter-spacing: 1.5px;
+}
+
+.mobile-nav-meta {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  font-size: 0.75rem;
+  color: var(--accent-gold-light);
+  opacity: 0.85;
+  letter-spacing: 1px;
+  text-transform: uppercase;
 }
 
 /* HERO SECTION WITH REAL PHOTOS BACKGROUND SLIDESHOW */
@@ -1960,6 +2160,10 @@ body {
 }
 
 @media (max-width: 991px) {
+  html {
+    scroll-padding-top: 75px;
+  }
+
   .story-grid,
   .schedule-cards-grid,
   .venue-transport-grid,
@@ -1974,9 +2178,44 @@ body {
   .nav-links {
     display: none;
   }
+
+  .mobile-menu-toggle {
+    display: inline-flex;
+  }
+
+  .btn-rsvp-nav {
+    display: none;
+  }
 }
 
 @media (max-width: 640px) {
+  .site-header {
+    padding: 0.75rem 0;
+  }
+  .nav-container {
+    padding: 0 1rem;
+    gap: 0.5rem;
+  }
+  .brand-crest-mini {
+    width: 34px;
+    height: 34px;
+    font-size: 0.82rem;
+  }
+  .brand-names {
+    font-size: 1rem;
+    letter-spacing: 1.8px;
+  }
+  .nav-actions {
+    gap: 0.45rem;
+  }
+  .btn-pill-sm {
+    padding: 0.35rem 0.6rem;
+    font-size: 0.72rem;
+  }
+  .mobile-menu-toggle {
+    width: 36px;
+    height: 36px;
+  }
   .countdown-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -2027,5 +2266,18 @@ body {
   }
   .upload-steps-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 400px) {
+  .nav-container {
+    padding: 0 0.65rem;
+  }
+  .brand-names {
+    font-size: 0.88rem;
+    letter-spacing: 1.2px;
+  }
+  #snow-toggle-btn {
+    display: none;
   }
 }
