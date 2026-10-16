@@ -100,12 +100,14 @@ body {
 }
 
 .nav-container {
-  max-width: 1280px;
+  max-width: 1440px;
+  width: 100%;
   margin: 0 auto;
   padding: 0 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 1.25rem;
 }
 
 .brand-logo {
@@ -114,6 +116,7 @@ body {
   gap: 0.75rem;
   text-decoration: none;
   color: var(--text-light);
+  flex-shrink: 0;
 }
 
 .brand-crest-mini {
@@ -154,17 +157,18 @@ body {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 1.75rem;
+  gap: clamp(0.75rem, 1.2vw, 1.35rem);
   list-style: none;
 }
 
 .nav-links a {
   color: rgba(255, 255, 255, 0.86);
   text-decoration: none;
-  font-size: 0.82rem;
+  font-size: 0.78rem;
   font-weight: 500;
   text-transform: uppercase;
-  letter-spacing: 1.6px;
+  letter-spacing: 1.2px;
+  white-space: nowrap;
   transition: color 0.25s ease;
   position: relative;
   padding: 0.3rem 0;
@@ -193,6 +197,7 @@ body {
   display: flex;
   align-items: center;
   gap: 0.65rem;
+  flex-shrink: 0;
 }
 
 .btn-pill-sm {
@@ -204,6 +209,7 @@ body {
   font-size: 0.75rem;
   font-weight: 600;
   letter-spacing: 1px;
+  white-space: nowrap;
   cursor: pointer;
   transition: all 0.2s ease;
   display: inline-flex;
@@ -227,6 +233,7 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1.4px;
+  white-space: nowrap;
   text-decoration: none;
   transition: all 0.25s ease;
 }
@@ -1678,6 +1685,29 @@ body {
 }
 
 /* Responsive Breakpoints */
+@media (max-width: 1200px) {
+  .brand-sub {
+    display: none;
+  }
+  .nav-links {
+    gap: 0.85rem;
+  }
+  .nav-links a {
+    font-size: 0.74rem;
+    letter-spacing: 0.8px;
+  }
+  #snow-toggle-btn span {
+    display: none;
+  }
+  .btn-pill-sm {
+    padding: 0.38rem 0.65rem;
+  }
+  .btn-rsvp-nav {
+    padding: 0.42rem 0.85rem;
+    letter-spacing: 1px;
+  }
+}
+
 @media (max-width: 991px) {
   .story-grid,
   .schedule-cards-grid,
