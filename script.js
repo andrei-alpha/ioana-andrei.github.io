@@ -45,13 +45,22 @@ document.addEventListener('DOMContentLoaded', () => {
   setInterval(updateCountdown, 1000);
 
   // 3. Language Toggle (RO / EN)
-  let currentLang = 'ro';
+  let currentLang = 'en';
   const langToggleBtn = document.getElementById('lang-toggle-btn');
 
   function applyLanguage(lang) {
     currentLang = lang;
+    document.documentElement.lang = lang;
+    if (lang === 'en') {
+      document.title = 'Ioana & Andrei • May 8, 2027 • Wedding at Pădurile Regale';
+    } else {
+      document.title = 'Ioana & Andrei • 8 Mai 2027 • Nuntă la Pădurile Regale';
+    }
+
     if (langToggleBtn) {
-      langToggleBtn.innerHTML = lang === 'ro' ? '🌐 RO / <span style="opacity:0.6">EN</span>' : '🌐 <span style="opacity:0.6">RO</span> / EN';
+      langToggleBtn.innerHTML = lang === 'ro' 
+        ? '🌐 <span id="lang-ro" style="font-weight:700">RO</span> / <span id="lang-en" style="opacity:0.55">EN</span>' 
+        : '🌐 <span id="lang-ro" style="opacity:0.55">RO</span> / <span id="lang-en" style="font-weight:700">EN</span>';
     }
 
     document.querySelectorAll('[data-ro][data-en]').forEach(el => {
@@ -63,30 +72,59 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-    // Update live ski pass preview labels
-    syncSkiPassPreview();
-    // Update story carousel caption language if active
-    updateStoryCarouselCaption();
-    // Update hero play/pause button label
-    updateHeroPlayButtonLabel();
+    // Dynamically update language-specific links and iframes (e.g. Google Forms)
+    document.querySelectorAll('[data-ro-href][data-en-href]').forEach(el => {
+      const targetHref = lang === 'ro' ? el.getAttribute('data-ro-href') : el.getAttribute('data-en-href');
+      el.setAttribute('href', targetHref);
+    });
+
+    document.querySelectorAll('[data-ro-src][data-en-src]').forEach(el => {
+      const targetSrc = lang === 'ro' ? el.getAttribute('data-ro-src') : el.getAttribute('data-en-src');
+      if (el.getAttribute('src') !== targetSrc) {
+        el.setAttribute('src', targetSrc);
+      }
+    });
+
+    document.querySelectorAll('[data-ro-title][data-en-title]').forEach(el => {
+      const titleText = lang === 'ro' ? el.getAttribute('data-ro-title') : el.getAttribute('data-en-title');
+      el.setAttribute('title', titleText);
+    });
+
+    // Update live ski pass preview labels if initialized
+    try {
+      if (typeof syncSkiPassPreview === 'function') {
+        syncSkiPassPreview();
+      }
+    } catch (e) {
+      // Deferred until ski pass elements are initialized
+    }
+    // Update story carousel caption language if initialized
+    try {
+      if (typeof updateStoryCarouselCaption === 'function') {
+        updateStoryCarouselCaption();
+      }
+    } catch (e) {
+      // Deferred until story carousel elements are initialized
+    }
   }
 
   if (langToggleBtn) {
-    langToggleBtn.addEventListener('click', () => {
-      applyLanguage(currentLang === 'ro' ? 'en' : 'ro');
+    langToggleBtn.addEventListener('click', (e) => {
+      const targetRo = e.target.closest('#lang-ro');
+      const targetEn = e.target.closest('#lang-en');
+      if (targetRo) {
+        applyLanguage('ro');
+      } else if (targetEn) {
+        applyLanguage('en');
+      } else {
+        applyLanguage(currentLang === 'ro' ? 'en' : 'ro');
+      }
     });
   }
 
   // 4. Full-Screen Hero Background Slideshow (Real Photos of Ioana & Andrei)
   const heroSlides = Array.from(document.querySelectorAll('.hero-slide'));
-  const heroDots = Array.from(document.querySelectorAll('.slide-dot'));
-  const heroPrevBtn = document.getElementById('hero-prev-btn');
-  const heroNextBtn = document.getElementById('hero-next-btn');
-  const heroPlayToggle = document.getElementById('hero-play-toggle');
-
   let currentHeroIdx = 0;
-  let heroIsPlaying = true;
-  let heroTimer = null;
 
   function showHeroSlide(index) {
     if (!heroSlides.length) return;
@@ -94,77 +132,14 @@ document.addEventListener('DOMContentLoaded', () => {
     heroSlides.forEach((slide, i) => {
       slide.classList.toggle('active', i === currentHeroIdx);
     });
-    heroDots.forEach((dot, i) => {
-      dot.classList.toggle('active', i === currentHeroIdx);
-    });
   }
 
   function nextHeroSlide() {
     showHeroSlide(currentHeroIdx + 1);
   }
 
-  function prevHeroSlide() {
-    showHeroSlide(currentHeroIdx - 1);
-  }
-
-  function startHeroTimer() {
-    stopHeroTimer();
-    if (heroIsPlaying) {
-      heroTimer = setInterval(nextHeroSlide, 5500);
-    }
-  }
-
-  function stopHeroTimer() {
-    if (heroTimer) {
-      clearInterval(heroTimer);
-      heroTimer = null;
-    }
-  }
-
-  function updateHeroPlayButtonLabel() {
-    if (!heroPlayToggle) return;
-    if (heroIsPlaying) {
-      heroPlayToggle.innerHTML = currentLang === 'ro' ? '⏸ Pauză Slideshow' : '⏸ Pause Slideshow';
-    } else {
-      heroPlayToggle.innerHTML = currentLang === 'ro' ? '▶ Rulează Slideshow' : '▶ Play Slideshow';
-    }
-  }
-
   if (heroSlides.length > 0) {
-    startHeroTimer();
-
-    if (heroNextBtn) {
-      heroNextBtn.addEventListener('click', () => {
-        nextHeroSlide();
-        startHeroTimer();
-      });
-    }
-
-    if (heroPrevBtn) {
-      heroPrevBtn.addEventListener('click', () => {
-        prevHeroSlide();
-        startHeroTimer();
-      });
-    }
-
-    heroDots.forEach((dot, idx) => {
-      dot.addEventListener('click', () => {
-        showHeroSlide(idx);
-        startHeroTimer();
-      });
-    });
-
-    if (heroPlayToggle) {
-      heroPlayToggle.addEventListener('click', () => {
-        heroIsPlaying = !heroIsPlaying;
-        updateHeroPlayButtonLabel();
-        if (heroIsPlaying) {
-          startHeroTimer();
-        } else {
-          stopHeroTimer();
-        }
-      });
-    }
+    setInterval(nextHeroSlide, 5500);
   }
 
   // 5. Story Section Interactive Photo Carousel
@@ -189,10 +164,12 @@ document.addEventListener('DOMContentLoaded', () => {
     currentStoryIdx = (idx + storyThumbBtns.length) % storyThumbBtns.length;
     const targetBtn = storyThumbBtns[currentStoryIdx];
     const newSrc = targetBtn.getAttribute('data-src');
+    const newPos = targetBtn.getAttribute('data-object-position') || 'center center';
 
     storyMainImg.style.opacity = '0.2';
     setTimeout(() => {
       storyMainImg.src = newSrc;
+      storyMainImg.style.objectPosition = newPos;
       storyMainImg.style.opacity = '1';
     }, 180);
 
@@ -264,12 +241,22 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function syncSkiPassPreview() {
     const nameVal = inputName && inputName.value.trim() ? inputName.value.trim() : (currentLang === 'ro' ? 'Invitatul Nostru Drag' : 'Our Honored Guest');
-    const attendVal = getRadioVal('attendance');
-    const transportVal = getRadioVal('transport');
+    const attendVal = getRadioVal('attendance') || 'yes';
+    const transportVal = getRadioVal('transport') || 'blue_pipera';
     const guestsVal = inputGuests ? inputGuests.value : '2';
     const menuVal = inputMenu ? inputMenu.value : 'standard';
 
     if (passHolder) passHolder.textContent = nameVal;
+
+    const passDate = document.getElementById('pass-date-val');
+    if (passDate) {
+      passDate.textContent = currentLang === 'ro' ? '08 MAI 2027' : 'MAY 8, 2027';
+    }
+
+    const passHours = document.getElementById('pass-hours-val');
+    if (passHours) {
+      passHours.textContent = currentLang === 'ro' ? 'Ceremonia: 18:00 • Petrecerea: de la 19:00' : '18:00 Ceremony • Party from 19:00';
+    }
 
     if (passStatus) {
       if (attendVal === 'yes') {
@@ -446,7 +433,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'DTSTART:20270508T150000Z',
         'DTEND:20270509T020000Z',
         'SUMMARY:Nunta Ioana & Andrei 🏔️ Pădurile Regale',
-        'DESCRIPTION:Ceremonia începe la ora 18:00 în pădurea de stejari seculari, iar Petrecerea la ora 19:00 la Pădurile Regale (Corbeanca), cu final între 02:00 și 05:00 dimineața. Transport asigurat cu Blue de la stația de metrou Pipera!',
+        'DESCRIPTION:Ceremonia începe la ora 18:00 în pădurea de stejari seculari, iar Petrecerea la ora 19:00 la Pădurile Regale (Corbeanca). Transport asigurat cu Blue de la stația de metrou Pipera!',
         'LOCATION:Pădurile Regale, Strada Pădurii, Corbeanca, Ilfov, România',
         'END:VEVENT',
         'END:VCALENDAR'
@@ -555,36 +542,17 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // 12. Interactive Photo Uploader (> Încarcă aici poze de la nuntă <)
+  // 12. Google Drive Shared Photo Album Portal
   const dropzone = document.getElementById('photo-dropzone');
-  const fileInput = document.getElementById('photo-file-input');
-  const previewGrid = document.getElementById('uploaded-photos-grid');
-  const uploadStatusMsg = document.getElementById('upload-status-msg');
+  const GOOGLE_DRIVE_FOLDER_URL = 'https://drive.google.com/drive/folders/15eIiVKhc_R7UWe9Yn_hY22IGWqXAQSpY?usp=sharing';
 
-  function handleFiles(files) {
-    if (!files || !files.length) return;
-    Array.from(files).forEach(file => {
-      if (!file.type.startsWith('image/')) return;
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const div = document.createElement('div');
-        div.className = 'uploaded-thumb';
-        div.innerHTML = `<img src="${e.target.result}" alt="Wedding Memory" />`;
-        if (previewGrid) previewGrid.prepend(div);
-      };
-      reader.readAsDataURL(file);
+  if (dropzone) {
+    dropzone.addEventListener('click', (e) => {
+      // If the user didn't click directly on an <a> link or child, open the shared Drive folder
+      if (!e.target.closest('a')) {
+        window.open(GOOGLE_DRIVE_FOLDER_URL, '_blank', 'noopener,noreferrer');
+      }
     });
-
-    if (uploadStatusMsg) {
-      uploadStatusMsg.textContent = currentLang === 'ro'
-        ? `✨ Mulțumim! ${files.length} fotografie(i) adăugată(e) în albumul Ioana & Andrei!`
-        : `✨ Thank you! ${files.length} photo(s) added to Ioana & Andrei's wedding album!`;
-      uploadStatusMsg.style.color = '#6be695';
-    }
-  }
-
-  if (dropzone && fileInput) {
-    dropzone.addEventListener('click', () => fileInput.click());
     dropzone.addEventListener('dragover', (e) => {
       e.preventDefault();
       dropzone.classList.add('dragover');
@@ -595,10 +563,7 @@ document.addEventListener('DOMContentLoaded', () => {
     dropzone.addEventListener('drop', (e) => {
       e.preventDefault();
       dropzone.classList.remove('dragover');
-      handleFiles(e.dataTransfer.files);
-    });
-    fileInput.addEventListener('change', (e) => {
-      handleFiles(e.target.files);
+      window.open(GOOGLE_DRIVE_FOLDER_URL, '_blank', 'noopener,noreferrer');
     });
   }
 
@@ -627,6 +592,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     function drawSnow() {
       if (!snowActive) {
+        ctx.clearRect(0, 0, width, height);
         requestAnimationFrame(drawSnow);
         return;
       }
@@ -664,4 +630,121 @@ document.addEventListener('DOMContentLoaded', () => {
       });
     }
   }
+
+  // 14. Background Atmosphere Music Player (YouTube IFrame API: Alex Warren - Ordinary)
+  const musicToggleBtn = document.getElementById('music-toggle-btn');
+  const YOUTUBE_VIDEO_ID = 'u2ah9tWTkmk';
+  let ytPlayer = null;
+  let isMusicPlaying = false;
+  let userManuallyToggled = false;
+
+  function updateMusicBtnUI(playing) {
+    isMusicPlaying = playing;
+    if (musicToggleBtn) {
+      if (playing) {
+        musicToggleBtn.classList.add('playing');
+        const titleText = currentLang === 'ro' 
+          ? 'Pauză muzică de fundal (Alex Warren - Ordinary)' 
+          : 'Pause background music (Alex Warren - Ordinary)';
+        musicToggleBtn.setAttribute('title', titleText);
+      } else {
+        musicToggleBtn.classList.remove('playing');
+        const titleText = currentLang === 'ro' 
+          ? 'Pornește muzica de fundal (Alex Warren - Ordinary)' 
+          : 'Play background music (Alex Warren - Ordinary)';
+        musicToggleBtn.setAttribute('title', titleText);
+      }
+    }
+  }
+
+  function initYouTubePlayer() {
+    if (typeof YT === 'undefined' || typeof YT.Player === 'undefined') return;
+    if (ytPlayer) return;
+
+    ytPlayer = new YT.Player('youtube-audio-player', {
+      height: '1',
+      width: '1',
+      videoId: YOUTUBE_VIDEO_ID,
+      playerVars: {
+        autoplay: 0,
+        controls: 0,
+        disablekb: 1,
+        fs: 0,
+        loop: 1,
+        playlist: YOUTUBE_VIDEO_ID,
+        modestbranding: 1,
+        playsinline: 1,
+        rel: 0
+      },
+      events: {
+        onReady: (e) => {
+          e.target.setVolume(35);
+        },
+        onStateChange: (e) => {
+          if (e.data === YT.PlayerState.PLAYING) {
+            updateMusicBtnUI(true);
+          } else if (e.data === YT.PlayerState.PAUSED || e.data === YT.PlayerState.ENDED) {
+            updateMusicBtnUI(false);
+          }
+        },
+        onError: (e) => {
+          console.warn('YouTube music player notice:', e);
+          updateMusicBtnUI(false);
+        }
+      }
+    });
+  }
+
+  // Hook into YouTube IFrame API Ready
+  if (window.YT && window.YT.Player) {
+    initYouTubePlayer();
+  } else {
+    const existingOnReady = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = function() {
+      if (typeof existingOnReady === 'function') existingOnReady();
+      initYouTubePlayer();
+    };
+  }
+
+  // Soft autoplay on first user interaction anywhere on the page
+  function startMusicOnFirstInteraction() {
+    if (userManuallyToggled) return;
+    if (ytPlayer && typeof ytPlayer.playVideo === 'function') {
+      try {
+        ytPlayer.playVideo();
+      } catch (err) {
+        console.warn('Autoplay interaction notice:', err);
+      }
+    }
+    document.removeEventListener('click', startMusicOnFirstInteraction);
+    document.removeEventListener('touchstart', startMusicOnFirstInteraction);
+  }
+
+  document.addEventListener('click', startMusicOnFirstInteraction, { once: true, passive: true });
+  document.addEventListener('touchstart', startMusicOnFirstInteraction, { once: true, passive: true });
+
+  // Music toggle button click handler
+  if (musicToggleBtn) {
+    musicToggleBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      userManuallyToggled = true;
+
+      if (!ytPlayer || typeof ytPlayer.getPlayerState !== 'function') {
+        initYouTubePlayer();
+        return;
+      }
+
+      const state = ytPlayer.getPlayerState();
+      if (state === YT.PlayerState.PLAYING) {
+        ytPlayer.pauseVideo();
+        updateMusicBtnUI(false);
+      } else {
+        ytPlayer.playVideo();
+        updateMusicBtnUI(true);
+      }
+    });
+  }
+
+  // Initial sync once DOM elements are all declared
+  applyLanguage(currentLang);
 });
